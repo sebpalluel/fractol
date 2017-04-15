@@ -1,0 +1,83 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AMP	fractol_define.h	/^# define AMP	/;"	d
+A_KEY	fractol_define.h	/^# define A_KEY	/;"	d
+BBP	fractol_define.h	/^# define BBP	/;"	d
+BLUE	fractol_define.h	/^# define BLUE	/;"	d
+BROWN	fractol_define.h	/^# define BROWN	/;"	d
+CAM	fractol_define.h	/^# define CAM	/;"	d
+CLR	fractol_define.h	/^# define CLR	/;"	d
+CTRL	fractol_define.h	/^# define CTRL	/;"	d
+DOT_KEY	fractol_define.h	/^# define DOT_KEY	/;"	d
+DOWN	fractol_define.h	/^# define DOWN	/;"	d
+D_KEY	fractol_define.h	/^# define D_KEY	/;"	d
+ENDIAN	fractol_define.h	/^# define ENDIAN	/;"	d
+EQUAL	fractol_define.h	/^# define EQUAL	/;"	d
+ESC	fractol_define.h	/^# define ESC	/;"	d
+E_KEY	fractol_define.h	/^# define E_KEY	/;"	d
+FRACTOL_DEFINE_H	fractol_define.h	/^# define FRACTOL_DEFINE_H$/;"	d
+FRACTOL_H	fractol_2.h	/^# define FRACTOL_H$/;"	d
+FRACTOL_STRUCT_H	fractol_struct.h	/^# define FRACTOL_STRUCT_H$/;"	d
+F_KEY	fractol_define.h	/^# define F_KEY	/;"	d
+GREEN	fractol_define.h	/^# define GREEN	/;"	d
+G_KEY	fractol_define.h	/^# define G_KEY	/;"	d
+HEIGHT	fractol_define.h	/^# define HEIGHT	/;"	d
+IMG	fractol_define.h	/^# define IMG	/;"	d
+LEFT	fractol_define.h	/^# define LEFT	/;"	d
+LERP_IN	fractol_define.h	/^# define LERP_IN	/;"	d
+LERP_OUT	fractol_define.h	/^# define LERP_OUT	/;"	d
+L_KEY	fractol_define.h	/^# define L_KEY	/;"	d
+MAP	fractol_define.h	/^# define MAP	/;"	d
+MAX_SIZE	fractol_define.h	/^# define MAX_SIZE	/;"	d
+MAX_STEP	fractol_define.h	/^# define MAX_STEP	/;"	d
+MINUS	fractol_define.h	/^# define MINUS	/;"	d
+MLX	fractol_define.h	/^# define MLX	/;"	d
+M_DEPTH	fractol_define.h	/^# define M_DEPTH	/;"	d
+M_HEIGHT	fractol_define.h	/^# define M_HEIGHT	/;"	d
+M_WIDTH	fractol_define.h	/^# define M_WIDTH	/;"	d
+Q_KEY	fractol_define.h	/^# define Q_KEY	/;"	d
+RIGHT	fractol_define.h	/^# define RIGHT	/;"	d
+R_KEY	fractol_define.h	/^# define R_KEY	/;"	d
+SLASH	fractol_define.h	/^# define SLASH	/;"	d
+SLASH_KEY	fractol_define.h	/^# define SLASH_KEY	/;"	d
+STAR	fractol_define.h	/^# define STAR	/;"	d
+STEP	fractol_define.h	/^# define STEP	/;"	d
+S_KEY	fractol_define.h	/^# define S_KEY	/;"	d
+UP	fractol_define.h	/^# define UP	/;"	d
+WHITE	fractol_define.h	/^# define WHITE	/;"	d
+WIDTH	fractol_define.h	/^# define WIDTH	/;"	d
+W_KEY	fractol_define.h	/^# define W_KEY	/;"	d
+cam	fractol_struct.h	/^	t_cam			*cam;$/;"	m	struct:s_setup
+curr_clr	fractol_struct.h	/^	t_color			*curr_clr;$/;"	m	struct:s_map
+fov	fractol_struct.h	/^	double			fov;$/;"	m	struct:s_cam
+height	fractol_struct.h	/^	int				height;$/;"	m	struct:s_map
+height	fractol_struct.h	/^	unsigned int	height;$/;"	m	struct:s_setup
+img	fractol_struct.h	/^	t_img			*img;$/;"	m	struct:s_setup
+lerp_in	fractol_struct.h	/^	t_color			*lerp_in;$/;"	m	struct:s_map
+lerp_out	fractol_struct.h	/^	t_color			*lerp_out;$/;"	m	struct:s_map
+line	fractol_struct.h	/^	size_t			line;$/;"	m	struct:s_setup
+map	fractol_struct.h	/^	t_map			*map;$/;"	m	struct:s_setup
+map	fractol_struct.h	/^	t_pix			**map;$/;"	m	struct:s_map
+mlx	fractol_struct.h	/^	t_mlx			*mlx;$/;"	m	struct:s_setup
+offset_x	fractol_struct.h	/^	double			offset_x;$/;"	m	struct:s_cam
+offset_y	fractol_struct.h	/^	double			offset_y;$/;"	m	struct:s_cam
+pix	fractol_struct.h	/^	t_pix			*pix;$/;"	m	struct:s_map
+pos	fractol_struct.h	/^	t_vec3			*pos;$/;"	m	struct:s_cam
+rot	fractol_struct.h	/^	t_vec3			*rot;$/;"	m	struct:s_cam
+s_cam	fractol_struct.h	/^typedef struct		s_cam$/;"	s
+s_map	fractol_struct.h	/^typedef struct		s_map$/;"	s
+s_setup	fractol_struct.h	/^typedef struct		s_setup $/;"	s
+scale	fractol_struct.h	/^	double			scale;$/;"	m	struct:s_cam
+t_cam	fractol_struct.h	/^}					t_cam;$/;"	t	typeref:struct:s_cam
+t_map	fractol_struct.h	/^}					t_map;$/;"	t	typeref:struct:s_map
+t_setup	fractol_struct.h	/^}					t_setup;$/;"	t	typeref:struct:s_setup
+tmp_map	fractol_struct.h	/^	int				**tmp_map;$/;"	m	struct:s_map
+tmp_mat	fractol_struct.h	/^	double			***tmp_mat;$/;"	m	struct:s_cam
+to_cam	fractol_struct.h	/^	double			**to_cam;$/;"	m	struct:s_cam
+ui	fractol_struct.h	/^	size_t			ui;$/;"	m	struct:s_setup
+width	fractol_struct.h	/^	int				width;$/;"	m	struct:s_map
+width	fractol_struct.h	/^	unsigned int	width;$/;"	m	struct:s_setup
