@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:20 by psebasti          #+#    #+#             */
-/*   Updated: 2017/04/18 20:20:25 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/04/19 16:02:37 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ size_t	ft_mandelbrot_init(t_setup *setup)
 	MAN->zoom = 300;
 	MAN->x1 = -2.05;
 	MAN->y1 = -1.3;
-	MAN->lerp_in = (t_color *)ft_memalloc(sizeof(t_color));
-	MAN->lerp_out = (t_color *)ft_memalloc(sizeof(t_color));
+	MAN->lerp_in = ft_colornew(0, 0, 0);
+	MAN->lerp_out = ft_colornew(255, 255, 255);
 	if (MAN->lerp_in && MAN->lerp_out)
 		return (1);
 	return (0);
