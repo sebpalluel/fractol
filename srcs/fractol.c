@@ -6,11 +6,22 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:09:10 by psebasti          #+#    #+#             */
-/*   Updated: 2017/04/14 18:23:35 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/04/18 20:36:56 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
+
+size_t		ft_fract_calc(t_setup *setup)
+{
+	if (setup->f_mode == 0 || setup->f_mode == 3)
+		if (!ft_mandelbrot_pthread(setup))
+			return (0);
+	if (setup->f_mode == 1 || setup->f_mode == 3)
+		if (!ft_julia_pthread(setup))
+			return (0);
+	return (1);
+}
 
 int			main(int ac, char **av)
 {

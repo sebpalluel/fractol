@@ -4,9 +4,18 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-ft_setup_init	fractol.c	/^static void		ft_setup_init(t_setup *setup)$/;"	f	file:
-ft_setup_init	setup.c	/^void		ft_setup_init(t_setup *setup)$/;"	f
-ft_setup_mode	fractol.c	/^static size_t	ft_setup_mode(int ac, char **av, t_setup *setup, size_t mode)$/;"	f	file:
-ft_setup_mode	setup.c	/^size_t	ft_setup_mode(int ac, char **av, t_setup *setup, size_t mode)$/;"	f
-main	fractol.c	/^int				main(int ac, char **av)$/;"	f
-usage	fractol.c	/^int				usage(int mode)$/;"	f
+ft_dezoom	mlx_process.c	/^static void	ft_dezoom(t_fract *fract)$/;"	f	file:
+ft_expose_hook	mlx_process.c	/^static int	ft_expose_hook(t_setup *setup)$/;"	f	file:
+ft_fract_calc	fractol.c	/^size_t		ft_fract_calc(t_setup *setup)$/;"	f
+ft_key_hook	mlx_process.c	/^static int	ft_key_hook(int keycode, t_setup *setup)$/;"	f	file:
+ft_mandelbrot_init	julia.c	/^size_t	ft_mandelbrot_init(t_setup *setup)$/;"	f
+ft_mandelbrot_init	mandelbrot.c	/^size_t	ft_mandelbrot_init(t_setup *setup)$/;"	f
+ft_mlx_process	mlx_process.c	/^void		ft_mlx_process(t_setup *setup)$/;"	f
+ft_mouse_hook	mlx_process.c	/^int			ft_mouse_hook(int mousecode, int x, int y, t_setup *setup)$/;"	f
+ft_setup_delete	setup.c	/^static void		ft_setup_delete(t_setup *setup)$/;"	f	file:
+ft_setup_fract_init	setup.c	/^static size_t	ft_setup_fract_init(t_setup *setup)$/;"	f	file:
+ft_setup_fract_select	setup.c	/^static void		ft_setup_fract_select(char **av, t_setup *setup)$/;"	f	file:
+ft_setup_init	setup.c	/^size_t			ft_setup_init(t_setup *setup)$/;"	f
+ft_setup_mode	setup.c	/^size_t			ft_setup_mode(int ac, char **av, t_setup *setup, size_t mode)$/;"	f
+ft_zoom	mlx_process.c	/^static void	ft_zoom(int x, int y, t_fract *fract)$/;"	f	file:
+main	fractol.c	/^int			main(int ac, char **av)$/;"	f

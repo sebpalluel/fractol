@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:32:54 by psebasti          #+#    #+#             */
-/*   Updated: 2017/04/14 18:26:02 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/04/18 18:11:47 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,37 @@ typedef struct		s_cam
 	double			offset_y;
 }					t_cam;
 
+typedef struct		s_fract
+{
+	double			it;
+	double			it_max;
+	double			y_max;
+	double			x;
+	double			y;
+	double			x1;
+	double			y1;
+	double			x2;
+	double			y2;
+	double			c_r;
+	double			c_i;
+	double			z_r;
+	double			z_i;
+	double			zoom;
+	t_color			*lerp_in;
+	t_color			*lerp_out;
+}					t_fract;
+
 typedef struct		s_setup 
 {
 	size_t			width;
 	size_t			height;
 	size_t			ui;
-	size_t			fract;
+	size_t			f_mode;
 	t_mlx			*mlx;
 	t_map			*map;
 	t_cam			*cam;
 	t_img			*img;
+	t_fract			**fract;
 }					t_setup;
 
 #endif

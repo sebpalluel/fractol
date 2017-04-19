@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:31:26 by psebasti          #+#    #+#             */
-/*   Updated: 2017/04/14 13:53:43 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/04/18 20:11:12 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@
 
 # define MAX_SIZE	100000
 
+# define MAN		setup->fract[0]
+# define JUL		setup->fract[1]
+//# define MAN		setup->fract[0]
 # define MAP		setup->map
 # define M_WIDTH	setup->map->width
 # define M_HEIGHT	setup->map->height
