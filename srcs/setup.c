@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:58:45 by psebasti          #+#    #+#             */
-/*   Updated: 2017/04/18 22:00:19 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/05 16:55:38 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void		ft_setup_delete(t_setup *setup)
 	int			frac_n;
 
 	frac_n = -1;
-		if (IMG)
+	if (IMG)
 		ft_imgdel(IMG, MLX->mlx_ptr);
 	if (MLX)
 		ft_mlxdelete(MLX);

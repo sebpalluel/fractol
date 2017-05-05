@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:31:26 by psebasti          #+#    #+#             */
-/*   Updated: 2017/04/18 20:11:12 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/03 17:44:51 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define WIDTH		1920
 # define HEIGHT		1080
+# define NUM_THREAD	8
 
 # define MAX_STEP	250
 # define STEP		10

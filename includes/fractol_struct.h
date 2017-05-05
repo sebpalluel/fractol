@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:32:54 by psebasti          #+#    #+#             */
-/*   Updated: 2017/04/18 18:11:47 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/04/26 22:00:48 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ typedef struct		s_fract
 	double			z_r;
 	double			z_i;
 	double			zoom;
+	double			tmp;
+	t_color			*clr_tmp;
 	t_color			*lerp_in;
 	t_color			*lerp_out;
 }					t_fract;

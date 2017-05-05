@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:01:08 by psebasti          #+#    #+#             */
-/*   Updated: 2017/04/19 16:08:50 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/04/26 22:02:50 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,10 @@ void		ft_mlx_process(t_setup *setup)
 	mlx_mouse_hook(MLX->win_ptr, ft_mouse_hook, setup);
 	mlx_do_sync(MLX->mlx_ptr);
 	mlx_loop(MLX->mlx_ptr);
+}
+
+void	ft_put_pxl_to_img(t_setup *setup, t_fract *fract, t_color *clr)
+{
+	if (fract->x < WIDTH && fract->y < WIDTH)
+		ft_memcpy(IMG->image_addr + (int)(4 * WIDTH * fract->y + fract->x * 4), clr, sizeof(int));
 }

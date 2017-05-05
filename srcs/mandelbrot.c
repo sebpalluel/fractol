@@ -6,23 +6,75 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:20 by psebasti          #+#    #+#             */
-/*   Updated: 2017/04/19 16:02:37 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/05 16:47:20 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-size_t	ft_mandelbrot_init(t_setup *setup)
+size_t		ft_mandelbrot_init(t_setup *setup)
 {
 	if (!(MAN = (t_fract *)ft_memalloc(sizeof(t_fract))))
 		return (0);
 	MAN->it_max = 50;
-	MAN->zoom = 300;
-	MAN->x1 = -2.05;
-	MAN->y1 = -1.3;
+	MAN->zoom = 200;
+	MAN->x1 = -2.0;
+	MAN->y1 = -1.9;
+	MAN->c_r = 0.285;
+	MAN->c_i = 0.01;
+	MAN->clr_tmp = ft_colornew(0, 0, 0);
 	MAN->lerp_in = ft_colornew(0, 0, 0);
 	MAN->lerp_out = ft_colornew(255, 255, 255);
 	if (MAN->lerp_in && MAN->lerp_out)
 		return (1);
 	return (0);
+}
+
+t_color 	*ft_mandelbrot_give_color(t_setup *setup)
+{
+
+return (MAN->clr_tmp);
+}
+
+static void	ft_mandelbrot_calc(t_setup *setup)
+{
+	MAN->c_r = MAN->x / MAN->zoom + MAN->x1;
+	MAN->c_i = MAN->y / MAN->zoom + MAN->y1;
+	MAN->z_r = 0;
+	MAN->z_i = 0;
+	MAN->it = 0;
+	while (MAN->z_r * MAN->z_r + MAN->z_i *
+			MAN->z_i < 4 && MAN->it < MAN->it_max)
+	{
+		MAN->tmp = MAN->z_r;
+		MAN->z_r = MAN->z_r * MAN->z_r -
+			MAN->z_i * MAN->z_i + MAN->c_r;
+		MAN->z_i = 2 * MAN->z_i * MAN->tmp + MAN->c_i;
+		MAN->it++;
+	}
+	if (MAN->it == MAN->it_max)
+		ft_put_pxl_to_img(setup, MAN, MAN->lerp_out);
+	else
+		ft_put_pxl_to_img(setup, MAN, ft_mandelbrot_give_color(setup));
+}
+
+void		*ft_mandelbrot(void *tab)
+{
+	t_setup	*setup;
+	double	tmp;
+
+	setup = (t_setup *)tab;
+	MAN->x = 0;
+	tmp = MAN->y;
+	while (MAN->x < WIDTH)
+	{
+		MAN->y = tmp;
+		while (MAN->y < MAN->y_max)
+		{
+			ft_mandelbrot_calc(setup);
+			MAN->y++;
+		}
+		MAN->x++;
+	}
+	return (tab);
 }
