@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:09:10 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/05 17:12:26 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/05 18:23:47 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 size_t		ft_fract_calc(t_setup *setup)
 {
 	if (setup->f_mode == 0 || setup->f_mode == 3)
-		if (ft_fractol_pthread(setup, ft_mandelbrot) != 0)
+		if (ft_fractol_pthread(setup, 0, ft_mandelbrot) != 0)
 			return (0);
 	if (setup->f_mode == 1 || setup->f_mode == 3)
-		if (ft_fractol_pthread(setup, ft_julia) != 0)
+		if (ft_fractol_pthread(setup, 1, ft_julia) != 0)
 			return (0);
 	return (1);
 }
