@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:09:10 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/05 16:44:40 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/05 17:12:26 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			main(int ac, char **av)
 
 	if (!(setup = (t_setup *)malloc(sizeof(t_setup))))
 		return (-1);
-	if (ft_setup_mode(ac, av, setup, 1) && ft_setup_init(setup))
+	if (ft_setup_mode(ac, av, setup, 1))
 		ft_mlx_process(setup);
 	return (ft_setup_mode(ac, av, setup, 0));
 }

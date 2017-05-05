@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:20 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/05 16:47:20 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/05 17:02:05 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ size_t		ft_mandelbrot_init(t_setup *setup)
 t_color 	*ft_mandelbrot_give_color(t_setup *setup)
 {
 
-return (MAN->clr_tmp);
+	return (MAN->clr_tmp);
 }
 
 static void	ft_mandelbrot_calc(t_setup *setup)

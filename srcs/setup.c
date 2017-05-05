@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:58:45 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/05 16:55:38 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/05 17:27:50 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,16 @@ static void		ft_setup_fract_select(char **av, t_setup *setup)
 		setup->f_mode = 3;
 }
 
+static size_t	ft_error_usage()
+{
+	ft_putendl("Usage:\n\
+	./fractol \"mandelbrot\"\n\
+	./fractol \"julia\"\n\
+	./fractol \"burningship\"\n\
+	./fractol \"all\"");
+	return (0);
+}
+
 size_t			ft_setup_mode(int ac, char **av, t_setup *setup, size_t mode)
 {
 	if (mode)
@@ -73,12 +83,8 @@ size_t			ft_setup_mode(int ac, char **av, t_setup *setup, size_t mode)
 		setup->f_mode = 666;
 		if (ac == 2)
 			ft_setup_fract_select(av, setup);
-		if (setup->f_mode == 666)
-		{
-			ft_putendl("Usage /fractol \"mandelbrot\", \"julia\", \
-					\"burningship\", \"all\"");
-			return (0);
-		}
+		if (ft_setup_init(setup) != 1 || setup->f_mode == 666)
+			return (ft_error_usage());
 		return (1);
 	}
 	else
