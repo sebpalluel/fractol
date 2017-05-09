@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:58:45 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/05 17:27:50 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/09 17:27:38 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static size_t	ft_setup_fract_init(t_setup *setup)
 
 size_t			ft_setup_init(t_setup *setup)
 {
+	setup->width = WIDTH;
+	setup->height = HEIGHT;
 	MLX = ft_initwindow("fractol", setup->width, setup->height);
 	IMG = ft_imgnew(MLX->mlx_ptr, setup->width, setup->height);
 	if (MLX && IMG && ft_setup_fract_init(setup))
