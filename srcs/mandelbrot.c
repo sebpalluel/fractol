@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:20 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/05 18:24:27 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/09 18:07:50 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void		*ft_mandelbrot(void *tab)
 	setup = (t_setup *)tab;
 	MAN->x = 0;
 	tmp = MAN->y;
+	printf("tmp %f\n", setup->fract[0]->y);
 	while (MAN->x < WIDTH)
 	{
 		MAN->y = tmp;
