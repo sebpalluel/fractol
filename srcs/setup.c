@@ -6,31 +6,32 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:58:45 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/11 18:10:46 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/16 16:34:40 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-static size_t	ft_setup_fract_init(t_setup *setup)
+static t_fract	**ft_setup_fract_init()
 {
-	size_t i;
+	size_t		i;
+	t_fract		**fract = NULL;
 
 	i = 0;
-	if (!(setup->fract = (t_fract **)ft_memalloc(sizeof(t_fract *) * 4)))
-		return (0);
+	if (!(fract = (t_fract **)ft_memalloc(sizeof(t_fract *) * 4)))
+		return (NULL);
 	while (i < 3)
 	{
-		if(!(setup->fract[i] = (t_fract *)ft_memalloc(sizeof(t_fract))))
-			return (0);
-		if (!(setup->fract[i]->clr_tmp = ft_colornew(0, 0, 0))\
-			|| !(setup->fract[i]->lerp_in = ft_colornew(0, 0, 0))\
-			|| !(setup->fract[i]->lerp_out = ft_colornew(0, 0, 0)))
-			return (0);
+		if(!(fract[i] = (t_fract *)ft_memalloc(sizeof(t_fract))))
+			return (NULL);
+		if (!(fract[i]->clr_tmp = ft_colornew(0, 0, 0))\
+				|| !(fract[i]->lerp_in = ft_colornew(0, 0, 0))\
+				|| !(fract[i]->lerp_out = ft_colornew(0, 0, 0)))
+			return (NULL);
 		i++;
 	}
-	setup->fract[i] = NULL;
-	return (1);
+	fract[i] = NULL;
+	return (fract);
 }
 
 static size_t	ft_setup_f_mode(t_setup *setup)
@@ -54,16 +55,18 @@ size_t			ft_setup_init(t_setup *setup)
 	i = 1;
 	while (i < NUM_THREAD + 1)
 	{
+		ft_memcpy((void *)&setup[i], (void *)&SETUP, sizeof(t_setup));
 		setup[i].mlx = (t_mlx *)ft_memalloc(sizeof(t_mlx));
 		setup[i].img = (t_img *)ft_memalloc(sizeof(t_img));
-		if (!setup[i].mlx || !setup[i].img || !ft_setup_fract_init(&setup[i]))
+		if (!setup[i].mlx || !setup[i].img || \
+				!(setup[i].fract = ft_setup_fract_init()))
 			return (0);
-		ft_memcpy((void *)&setup[i], (void *)&SETUP, sizeof(t_setup));
 		ft_memcpy((void *)setup[i].mlx, (void *)SETUP.mlx, sizeof(t_mlx));
 		ft_memcpy((void *)setup[i].img, (void *)SETUP.img, sizeof(t_img));
 		i++;
 	}
-	if (MLX && IMG && ft_setup_fract_init(&SETUP) && ft_setup_f_mode(&SETUP))
+	if (MLX && IMG && (SETUP.fract = ft_setup_fract_init()) && \
+			ft_setup_f_mode(&SETUP))
 	{
 		ft_fract_calc(setup);
 		return (1);
