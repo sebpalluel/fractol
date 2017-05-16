@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:20 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/11 18:02:46 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/16 17:00:04 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static void	ft_mandelbrot_calc(t_setup *setup)
 			MAN->z_i * MAN->z_i + MAN->c_r;
 		MAN->z_i = 2 * MAN->z_i * MAN->tmp + MAN->c_i;
 		MAN->it++;
-		//printf("MAN->z_i %f ", MAN->z_i);
 	}
 	if (MAN->it == MAN->it_max)
 		ft_put_pxl_to_img(setup, MAN, MAN->lerp_out);
