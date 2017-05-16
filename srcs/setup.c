@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:58:45 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/16 16:42:27 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/16 16:54:37 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static size_t	ft_setup_fract_init(t_setup *setup)
 		if(!(setup->fract[i] = (t_fract *)ft_memalloc(sizeof(t_fract))))
 			return (0);
 		if (!(setup->fract[i]->clr_tmp = ft_colornew(0, 0, 0))\
-			|| !(setup->fract[i]->lerp_in = ft_colornew(0, 0, 0))\
-			|| !(setup->fract[i]->lerp_out = ft_colornew(0, 0, 0)))
+				|| !(setup->fract[i]->lerp_in = ft_colornew(0, 0, 0))\
+				|| !(setup->fract[i]->lerp_out = ft_colornew(0, 0, 0)))
 			return (0);
 		i++;
 	}
@@ -71,15 +71,18 @@ size_t			ft_setup_init(t_setup *setup)
 	return (0);
 }
 
-static void		ft_setup_delete(t_setup *setup)
+static void		ft_setup_delete(size_t i, t_setup *setup)
 {
 	int			frac_n;
 
 	frac_n = -1;
-	if (IMG)
-		ft_imgdel(IMG, MLX->mlx_ptr);
-	if (MLX)
-		ft_mlxdelete(MLX);
+	if (!i)
+	{
+		if (IMG)
+			ft_imgdel(IMG, MLX->mlx_ptr);
+		if (MLX)
+			ft_mlxdelete(MLX);
+	}
 	if (setup->fract)
 	{
 		while (++frac_n < 3)
@@ -127,7 +130,7 @@ size_t			ft_setup_mode(char **av, t_setup *setup, size_t mode)
 	{
 		while (i < NUM_THREAD + 1)
 		{
-			ft_setup_delete(&setup[i]);
+			ft_setup_delete(i, &setup[i]);
 			i++;
 		}
 		if (SETUP.f_mode != 666)
