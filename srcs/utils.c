@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 17:50:09 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/11 18:08:56 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/16 17:04:24 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,14 @@ static int		ft_pthread_process(t_setup *setup, void *(*f)(void *))
 	{
 		if ((err = pthread_create(&thread[i], NULL, f, &setup[i + 1])) != 0)
 			return (err);
-	//	printf("fract process %f it_max %f\n", setup[i + 1].fract[0]->y\
-	//			, setup[i + 1].fract[0]->it_max);
-		printf("i before %d\n", i);
 		i++;
 	}
 	while (i > 0)
 	{
 		i--;
-		printf("i after %d\n", i);
 		if ((err = pthread_join(thread[i], NULL)) != 0)
-		{
-			printf("err %d\n", err);
 			return (err);
-		}
 	}
-	printf("err end %d\n", err);
 	return (err);
 }
 
@@ -51,8 +43,8 @@ int				ft_fractol_pthread(t_setup *setup, size_t frac, \
 	i = 1;
 	while (i < NUM_THREAD + 1)
 	{
-		printf("i fractol_pthread %lu\n", i);
-		ft_memcpy((void *)setup[i].fract[frac], (void *)SETUP.fract[frac], sizeof(t_fract));
+		ft_memcpy((void *)setup[i].fract[frac], (void *)SETUP.fract[frac], \
+				sizeof(t_fract));
 		setup[i].fract[frac]->y = 100 * i;
 		setup[i].fract[frac]->y_max = 100 * (i + 1);
 		i++;
