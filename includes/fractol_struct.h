@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:32:54 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/10 18:52:42 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/11 16:50:58 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,11 @@ typedef struct		s_setup
 	size_t			height;
 	size_t			ui;
 	size_t			f_mode;
-	double			test;
 	t_mlx			*mlx;
-	t_map			*map;
-	t_cam			*cam;
+	//t_map			*map;
+	//t_cam			*cam;
 	t_img			*img;
-	t_fract			*fract;
+	t_fract			**fract;
 }					t_setup;
 
 #endif

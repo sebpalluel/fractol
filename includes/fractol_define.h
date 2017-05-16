@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:31:26 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/03 17:44:51 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/11 15:44:12 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@
 
 # define MAX_SIZE	100000
 
+# define SETUP		setup[0]
 # define MAN		setup->fract[0]
 # define JUL		setup->fract[1]
 //# define MAN		setup->fract[0]

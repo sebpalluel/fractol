@@ -6,28 +6,23 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:20 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/09 18:07:50 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/11 18:02:46 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-size_t		ft_mandelbrot_init(t_setup *setup)
+void		ft_mandelbrot_init(t_setup *setup)
 {
-	if (!(MAN = (t_fract *)ft_memalloc(sizeof(t_fract))))
-		return (0);
 	MAN->it_max = 50;
 	MAN->zoom = 200;
 	MAN->x1 = -2.0;
 	MAN->y1 = -1.9;
 	MAN->c_r = 0.285;
 	MAN->c_i = 0.01;
-	MAN->clr_tmp = ft_colornew(0, 0, 0);
-	MAN->lerp_in = ft_colornew(0, 0, 0);
-	MAN->lerp_out = ft_colornew(255, 255, 255);
-	if (MAN->lerp_in && MAN->lerp_out)
-		return (1);
-	return (0);
+	ft_color(MAN->clr_tmp, 0, 0, 0);
+	ft_color(MAN->lerp_in, 0, 0, 0);
+	ft_color(MAN->lerp_out, 255, 255, 255);
 }
 
 t_color 	*ft_mandelbrot_give_color(t_setup *setup)
@@ -51,6 +46,7 @@ static void	ft_mandelbrot_calc(t_setup *setup)
 			MAN->z_i * MAN->z_i + MAN->c_r;
 		MAN->z_i = 2 * MAN->z_i * MAN->tmp + MAN->c_i;
 		MAN->it++;
+		//printf("MAN->z_i %f ", MAN->z_i);
 	}
 	if (MAN->it == MAN->it_max)
 		ft_put_pxl_to_img(setup, MAN, MAN->lerp_out);
@@ -66,8 +62,9 @@ void		*ft_mandelbrot(void *tab)
 	setup = (t_setup *)tab;
 	MAN->x = 0;
 	tmp = MAN->y;
-	printf("tmp %f\n", setup->fract[0]->y);
-	while (MAN->x < WIDTH)
+	printf("tmp %f\n", MAN->y);
+	printf("width %lu\n", setup->width);
+	while (MAN->x < setup->width)
 	{
 		MAN->y = tmp;
 		while (MAN->y < MAN->y_max)

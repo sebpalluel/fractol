@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:58:45 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/09 17:27:38 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/11 18:10:46 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,27 @@
 
 static size_t	ft_setup_fract_init(t_setup *setup)
 {
-	if (!(setup->fract = (t_fract **)ft_memalloc(sizeof(t_fract *) * 3)))
+	size_t i;
+
+	i = 0;
+	if (!(setup->fract = (t_fract **)ft_memalloc(sizeof(t_fract *) * 4)))
 		return (0);
+	while (i < 3)
+	{
+		if(!(setup->fract[i] = (t_fract *)ft_memalloc(sizeof(t_fract))))
+			return (0);
+		if (!(setup->fract[i]->clr_tmp = ft_colornew(0, 0, 0))\
+			|| !(setup->fract[i]->lerp_in = ft_colornew(0, 0, 0))\
+			|| !(setup->fract[i]->lerp_out = ft_colornew(0, 0, 0)))
+			return (0);
+		i++;
+	}
+	setup->fract[i] = NULL;
+	return (1);
+}
+
+static size_t	ft_setup_f_mode(t_setup *setup)
+{
 	if (setup->f_mode == 0 || setup->f_mode == 3)
 		ft_mandelbrot_init(setup);
 	if (setup->f_mode == 1 || setup->f_mode == 3)
@@ -24,14 +43,27 @@ static size_t	ft_setup_fract_init(t_setup *setup)
 	//ft_burningship_init(setup);
 	return (1);
 }
-
 size_t			ft_setup_init(t_setup *setup)
 {
-	setup->width = WIDTH;
-	setup->height = HEIGHT;
-	MLX = ft_initwindow("fractol", setup->width, setup->height);
-	IMG = ft_imgnew(MLX->mlx_ptr, setup->width, setup->height);
-	if (MLX && IMG && ft_setup_fract_init(setup))
+	size_t		i;
+
+	SETUP.width = WIDTH;
+	SETUP.height = HEIGHT;
+	MLX = ft_initwindow("fractol", SETUP.width, SETUP.height);
+	IMG = ft_imgnew(MLX->mlx_ptr, SETUP.width, SETUP.height);
+	i = 1;
+	while (i < NUM_THREAD + 1)
+	{
+		setup[i].mlx = (t_mlx *)ft_memalloc(sizeof(t_mlx));
+		setup[i].img = (t_img *)ft_memalloc(sizeof(t_img));
+		if (!setup[i].mlx || !setup[i].img || !ft_setup_fract_init(&setup[i]))
+			return (0);
+		ft_memcpy((void *)&setup[i], (void *)&SETUP, sizeof(t_setup));
+		ft_memcpy((void *)setup[i].mlx, (void *)SETUP.mlx, sizeof(t_mlx));
+		ft_memcpy((void *)setup[i].img, (void *)SETUP.img, sizeof(t_img));
+		i++;
+	}
+	if (MLX && IMG && ft_setup_fract_init(&SETUP) && ft_setup_f_mode(&SETUP))
 	{
 		ft_fract_calc(setup);
 		return (1);
@@ -68,31 +100,37 @@ static void		ft_setup_fract_select(char **av, t_setup *setup)
 		setup->f_mode = 3;
 }
 
-static size_t	ft_error_usage()
+int				ft_error_usage()
 {
 	ft_putendl("Usage:\n\
-	./fractol \"mandelbrot\"\n\
-	./fractol \"julia\"\n\
-	./fractol \"burningship\"\n\
-	./fractol \"all\"");
+			./fractol \"mandelbrot\"\n\
+			./fractol \"julia\"\n\
+			./fractol \"burningship\"\n\
+			./fractol \"all\"");
 	return (0);
 }
 
-size_t			ft_setup_mode(int ac, char **av, t_setup *setup, size_t mode)
+size_t			ft_setup_mode(char **av, t_setup *setup, size_t mode)
 {
+	size_t		i;
+
+	i = 0;
 	if (mode)
 	{
-		setup->f_mode = 666;
-		if (ac == 2)
-			ft_setup_fract_select(av, setup);
-		if (ft_setup_init(setup) != 1 || setup->f_mode == 666)
+		SETUP.f_mode = 666;
+		ft_setup_fract_select(av, &SETUP);
+		if (ft_setup_init(setup) != 1 || SETUP.f_mode == 666)
 			return (ft_error_usage());
 		return (1);
 	}
 	else
 	{
-		ft_setup_delete(setup);
-		if (setup->f_mode != 666)
+		while (i < NUM_THREAD + 1)
+		{
+			ft_setup_delete(&setup[i]);
+			i++;
+		}
+		if (SETUP.f_mode != 666)
 			ft_putendl("program exited normally");
 		exit (0);
 	}

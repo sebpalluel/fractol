@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:09:10 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/05 18:23:47 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/11 16:35:41 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,13 @@ int			main(int ac, char **av)
 {
 	t_setup	*setup = NULL;
 
-	if (!(setup = (t_setup *)malloc(sizeof(t_setup))))
-		return (-1);
-	if (ft_setup_mode(ac, av, setup, 1))
-		ft_mlx_process(setup);
-	return (ft_setup_mode(ac, av, setup, 0));
+	if (ac == 2)
+	{
+		if (!(setup = (t_setup *)malloc(sizeof(t_setup) * NUM_THREAD + 1)))
+			return (-1);
+		if (ft_setup_mode(av, setup, 1))
+			ft_mlx_process(setup);
+		return (ft_setup_mode(av, setup, 0));
+	}
+	return (ft_error_usage());
 }
