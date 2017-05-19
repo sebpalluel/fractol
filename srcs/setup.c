@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:58:45 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/16 16:56:27 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/16 20:52:43 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,25 @@
 static size_t	ft_setup_fract_init(t_setup *setup)
 {
 	size_t i;
+	size_t j;
 
 	i = 0;
+	j = 0;
 	if (!(setup->fract = (t_fract **)ft_memalloc(sizeof(t_fract *) * 4)))
 		return (0);
 	while (i < 3)
 	{
-		if(!(setup->fract[i] = (t_fract *)ft_memalloc(sizeof(t_fract))))
+		if(!(setup->fract[i] = (t_fract *)ft_memalloc(sizeof(t_fract)))\
+				|| !(setup->fract[i]->clr = (t_color **)\
+					ft_memalloc(sizeof(t_color *) * 4)))
 			return (0);
-		if (!(setup->fract[i]->clr_tmp = ft_colornew(0, 0, 0))\
-				|| !(setup->fract[i]->lerp_in = ft_colornew(0, 0, 0))\
-				|| !(setup->fract[i]->lerp_out = ft_colornew(0, 0, 0)))
-			return (0);
+		while (j < 3)
+		{
+			if (!(setup->fract[i]->clr[j] = ft_colornew(0, 0, 0)))
+				return (0);
+			j++;
+			setup->fract[i]->clr[j] = NULL;
+		}
 		i++;
 	}
 	setup->fract[i] = NULL;
@@ -74,6 +81,7 @@ size_t			ft_setup_init(t_setup *setup)
 static void		ft_setup_delete(size_t i, t_setup *setup)
 {
 	int			frac_n;
+	int			col_n;
 
 	frac_n = -1;
 	if (!i)
@@ -86,7 +94,12 @@ static void		ft_setup_delete(size_t i, t_setup *setup)
 	if (setup->fract)
 	{
 		while (++frac_n < 3)
+		{
+			col_n = -1;
+			while (++col_n < 3)
+				free (setup->fract[frac_n]->clr[col_n]);
 			free (setup->fract[frac_n]);
+		}
 		free (setup->fract);
 	}
 }

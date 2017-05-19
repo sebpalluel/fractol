@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:01:08 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/11 17:54:11 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/16 18:47:37 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static int	ft_expose_hook(t_setup *setup)
 	mlx_put_image_to_window(MLX->mlx_ptr, MLX->win_ptr, IMG->image, 0, 0);
 	//	if (setup->ui == 1)
 	//		ft_print_cam(setup);
+	ft_fract_calc(setup);
 	mlx_do_sync(MLX->mlx_ptr);
 	return (0);
 }

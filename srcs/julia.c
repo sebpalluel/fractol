@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:36 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/11 17:28:08 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/16 20:48:56 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ void		ft_julia_init(t_setup *setup)
 	JUL->y1 = -1.9;
 	JUL->c_r = 0.285;
 	JUL->c_i = 0.01;
-	ft_color(JUL->clr_tmp, 0, 0, 0);
-	ft_color(JUL->lerp_in, 0, 0, 0);
-	ft_color(JUL->lerp_out, 255, 255, 255);
+	ft_color(JUL->clr[0], 0, 0, 0);
+	ft_color(JUL->clr[1], 0, 0, 0);
+	ft_color(JUL->clr[2], 255, 255, 255);
 }
 
 t_color 	*ft_julia_give_color(t_setup *setup)
 {
 
-	return (JUL->clr_tmp);
+	return (JUL->clr[0]);
 }
 
 static void	ft_julia_calc(t_setup *setup)
@@ -46,7 +46,7 @@ static void	ft_julia_calc(t_setup *setup)
 		JUL->it++;
 	}
 	if (JUL->it == JUL->it_max)
-		ft_put_pxl_to_img(setup, JUL, JUL->lerp_out);
+		ft_put_pxl_to_img(setup, JUL, JUL->clr[2]);
 	else
 		ft_put_pxl_to_img(setup, JUL, ft_julia_give_color(setup));
 }

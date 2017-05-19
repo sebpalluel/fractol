@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:09:10 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/11 16:35:41 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/16 18:50:22 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 size_t		ft_fract_calc(t_setup *setup)
 {
+	printf("fract_calc\n");
 	if (setup->f_mode == 0 || setup->f_mode == 3)
 		if (ft_fractol_pthread(setup, 0, ft_mandelbrot) != 0)
 			return (0);
