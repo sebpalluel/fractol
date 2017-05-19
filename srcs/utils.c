@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 17:50:09 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/16 21:02:03 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/19 13:06:43 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ int				ft_fractol_pthread(t_setup *setup, size_t frac, \
 	j = 0;
 	while (i < NUM_THREAD + 1)
 	{
-		ft_memcpy((void *)setup[i].fract[frac], (void *)SETUP.fract[frac], \
-				sizeof(t_fract));
+		//ft_memcpy((void *)setup[i].fract[frac], (void *)SETUP.fract[frac], \
+		//		sizeof(t_fract));
 		while (j < 3)
 		{	
-			ft_memcpy((void *)setup[i].fract[frac]->clr[j], (void *)SETUP.fract[frac]->clr[j], \
-					sizeof(t_color));
+		//	ft_memcpy((void *)setup[i].fract[frac]->clr[j], (void *)SETUP.fract[frac]->clr[j], \
+		//			sizeof(t_color));
 			j++;
 		}
 		setup[i].fract[frac]->y = 100 * i;

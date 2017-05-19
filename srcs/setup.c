@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:58:45 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/16 20:52:43 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/19 13:26:32 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ size_t			ft_setup_init(t_setup *setup)
 	i = 1;
 	while (i < NUM_THREAD + 1)
 	{
-		ft_memcpy((void *)&setup[i], (void *)&SETUP, sizeof(t_setup));
+//		ft_memcpy((void *)&setup[i], (void *)&SETUP, sizeof(t_setup));
 		setup[i].mlx = (t_mlx *)ft_memalloc(sizeof(t_mlx));
 		setup[i].img = (t_img *)ft_memalloc(sizeof(t_img));
 		if (!setup[i].mlx || !setup[i].img || !ft_setup_fract_init(&setup[i]))
@@ -86,10 +86,10 @@ static void		ft_setup_delete(size_t i, t_setup *setup)
 	frac_n = -1;
 	if (!i)
 	{
-		if (IMG)
-			ft_imgdel(IMG, MLX->mlx_ptr);
-		if (MLX)
-			ft_mlxdelete(MLX);
+	//	if (IMG)
+	//		ft_imgdel(IMG, MLX->mlx_ptr);
+	//	if (MLX)
+	//		ft_mlxdelete(MLX);
 	}
 	if (setup->fract)
 	{
