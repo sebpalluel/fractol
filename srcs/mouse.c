@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:55:22 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/11 15:50:16 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/19 14:39:03 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,5 @@ int			ft_mouse_hook(int mousecode, int x, int y, t_setup *setup)
 			while (++frac < 3)
 				ft_dezoom(setup->fract[frac]);
 	}
-	ft_fract_calc(setup);
-	return (0);
+	return (1);
 }

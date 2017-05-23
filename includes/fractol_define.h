@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:31:26 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/11 15:44:12 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/19 17:04:38 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@
 
 # define MAX_SIZE	100000
 
-# define SETUP		setup[0]
+# define SETUP		setup[0][0]
 # define MAN		setup->fract[0]
 # define JUL		setup->fract[1]
 //# define MAN		setup->fract[0]
@@ -64,9 +64,9 @@
 # define LERP_IN	setup->map->lerp_in
 # define LERP_OUT	setup->map->lerp_out
 # define CLR		setup->map->curr_clr
-# define CAM		setup->cam
-# define MLX		setup->mlx
-# define IMG		setup->img
+# define CAM		setup[0][0].cam
+# define MLX		setup[0][0].mlx
+# define IMG		setup[0][0].img
 //# define MAT		setup->cam->matrix
 
 #endif
