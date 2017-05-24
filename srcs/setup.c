@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:58:45 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/23 21:21:07 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/24 16:00:35 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ static size_t	ft_setup_f_mode(t_setup *setup)
 static size_t	ft_setup_init(t_setup **setup)
 {
 	size_t		i;
-	t_setup *tab;
-	tab = *setup;
+	t_setup		*tab;
 
+	tab = *setup;
 	SETUP.width = WIDTH;
 	SETUP.height = HEIGHT;
 	MLX = ft_initwindow("fractol", SETUP.width, SETUP.height);
@@ -77,8 +77,7 @@ static size_t	ft_setup_init(t_setup **setup)
 				return (0);
 			i++;
 		}
-		ft_fract_calc(setup);
-		return (1);
+		return (ft_fract_calc(setup));
 	}
 	return (0);
 }
