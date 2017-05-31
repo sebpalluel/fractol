@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:01:08 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/24 15:37:58 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/24 21:48:07 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,11 @@ static int	ft_key_hook(int keycode, void *param)
 void		ft_mlx_process(t_setup **setup)
 {
 	printf("mlx_process begin, win_ptr %p setup %p\n", MLX->win_ptr, setup);
-	printf("mlx_process before expose\n");
 	mlx_key_hook(MLX->win_ptr, ft_key_hook, setup);
+	printf("mlx_process before expose\n");
 	mlx_expose_hook(MLX->win_ptr, ft_expose_hook, setup);
 	mlx_mouse_hook(MLX->win_ptr, ft_mouse_hook, setup[0]);
+	printf("mlx_process after expose\n");
 	//		ft_fract_calc(setup);
 	//	if (mlx_key_hook(MLX->win_ptr, ft_key_hook, setup[0]) == ESC)
 	//	{
@@ -60,6 +61,7 @@ void		ft_mlx_process(t_setup **setup)
 	//		ft_setup_mode(0, setup, 0);
 	//	}
 	mlx_do_sync(MLX->mlx_ptr);
+	printf("mlx_process after sync\n");
 	mlx_loop(MLX->mlx_ptr);
 }
 
