@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:58:45 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/24 16:00:35 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/31 15:17:10 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,29 +51,30 @@ static size_t	ft_setup_f_mode(t_setup *setup)
 	return (1);
 }
 
-static size_t	ft_setup_init(t_setup **setup)
+static size_t	ft_setup_init(t_setup *setup)
 {
 	size_t		i;
 	t_setup		*tab;
 
-	tab = *setup;
+	tab = setup;
 	SETUP.width = WIDTH;
 	SETUP.height = HEIGHT;
 	MLX = ft_initwindow("fractol", SETUP.width, SETUP.height);
 	IMG = ft_imgnew(MLX->mlx_ptr, SETUP.width, SETUP.height);
 	i = 1;
-	if (MLX && IMG && ft_setup_fract_init(&tab[0]) && ft_setup_f_mode(&tab[0]))
+	if (MLX && IMG && ft_setup_fract_init(&SETUP) && ft_setup_f_mode(&SETUP))
 	{
 		while (i < NUM_THREAD + 1)
 		{
-			ft_memcpy(&tab[i], &tab[0], sizeof(t_setup));
-			tab[i].mlx = (t_mlx *)ft_memalloc(sizeof(t_mlx));
-			tab[i].img = (t_img *)ft_memalloc(sizeof(t_img));
-			if (!tab[i].mlx || !tab[i].img)
+			ft_memcpy(&setup[i], &SETUP, sizeof(t_setup));
+			setup[i].mlx = (t_mlx *)ft_memalloc(sizeof(t_mlx));
+			setup[i].img = (t_img *)ft_memalloc(sizeof(t_img));
+			if (!setup[i].mlx || !setup[i].img)
 				return (0);
-			ft_memcpy(&(tab[i]).mlx, &(tab[0]).mlx, sizeof(t_mlx));
-			ft_memcpy((void *)&(tab[i]).img, (void *)&(tab[0]).img, sizeof(t_img));
-			if (!ft_setup_fract_init(&tab[i]))
+			ft_memcpy(&(setup[i]).mlx, &(SETUP).mlx, sizeof(t_mlx));
+			ft_memcpy((void *)&(setup[i]).img, (void *)&(SETUP).img,\
+					sizeof(t_img));
+			if (!ft_setup_fract_init(&setup[i]))
 				return (0);
 			i++;
 		}
@@ -82,7 +83,7 @@ static size_t	ft_setup_init(t_setup **setup)
 	return (0);
 }
 
-static void		ft_setup_delete(size_t i, t_setup **setup)
+static void		ft_setup_delete(size_t i, t_setup *setup)
 {
 	int			frac_n;
 	int			col_n;
@@ -92,16 +93,16 @@ static void		ft_setup_delete(size_t i, t_setup **setup)
 		ft_imgdel(IMG, MLX->mlx_ptr);
 	if (MLX)
 		ft_mlxdelete(MLX);
-	if (setup[i]->fract)
+	if (setup[i].fract)
 	{
 		while (++frac_n < 3)
 		{
 			col_n = -1;
 			while (++col_n < 3)
-				free (setup[i]->fract[frac_n]->clr[col_n]);
-			free (setup[i]->fract[frac_n]);
+				free (setup[i].fract[frac_n]->clr[col_n]);
+			free (setup[i].fract[frac_n]);
 		}
-		free (setup[i]->fract);
+		free (setup[i].fract);
 	}
 }
 
@@ -127,7 +128,7 @@ int				ft_error_usage()
 	return (0);
 }
 
-size_t			ft_setup_mode(char **av, t_setup **setup, size_t mode)
+size_t			ft_setup_mode(char **av, t_setup *setup, size_t mode)
 {
 	size_t		i;
 

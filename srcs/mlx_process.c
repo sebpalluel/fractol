@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:01:08 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/24 21:48:07 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/05/31 15:23:34 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_expose_hook(void *param)
 {
-	t_setup **setup;
+	t_setup *setup;
 
 	setup = param;
 	printf("test expose hook\n");
@@ -30,7 +30,7 @@ static int	ft_expose_hook(void *param)
 
 static int	ft_key_hook(int keycode, void *param)
 {
-	t_setup **setup;
+	t_setup *setup;
 
 	setup = param;
 	printf("test key hook %d param %p\n", keycode, setup);
@@ -46,13 +46,13 @@ static int	ft_key_hook(int keycode, void *param)
 	return (0);
 }
 
-void		ft_mlx_process(t_setup **setup)
+void		ft_mlx_process(t_setup *setup)
 {
 	printf("mlx_process begin, win_ptr %p setup %p\n", MLX->win_ptr, setup);
 	mlx_key_hook(MLX->win_ptr, ft_key_hook, setup);
 	printf("mlx_process before expose\n");
 	mlx_expose_hook(MLX->win_ptr, ft_expose_hook, setup);
-	mlx_mouse_hook(MLX->win_ptr, ft_mouse_hook, setup[0]);
+	mlx_mouse_hook(MLX->win_ptr, ft_mouse_hook, setup);
 	printf("mlx_process after expose\n");
 	//		ft_fract_calc(setup);
 	//	if (mlx_key_hook(MLX->win_ptr, ft_key_hook, setup[0]) == ESC)
