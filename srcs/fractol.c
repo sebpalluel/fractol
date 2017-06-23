@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:09:10 by psebasti          #+#    #+#             */
-/*   Updated: 2017/06/21 14:50:15 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/06/23 14:16:15 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int			main(int ac, char **av)
 		if (!setup)
 			return (-1);
 		ft_bzero(setup, sizeof(t_setup) * (NUM_THREAD + 2));
-		printf("bedore setup main\n");
+		printf("before setup main\n");
 		if (ft_setup_mode(av, setup, 1))
 			ft_mlx_process(setup);
 		return (ft_setup_mode(av, setup, 0));

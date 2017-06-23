@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 17:50:09 by psebasti          #+#    #+#             */
-/*   Updated: 2017/06/21 14:48:51 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/06/23 14:04:59 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,25 @@
 
 static int		ft_pthread_process(t_setup *setup, void *(*f)(void *))
 {
-	pthread_t	thread[NUM_THREAD];
+	//pthread_t	thread[NUM_THREAD];
 	int			i;
 	int			err;
 
 	i = 0;
+	err = 0;
 	while (i < NUM_THREAD)
 	{
-		if ((err = pthread_create(&thread[i], NULL, f, &setup[i + 1])) != 0)
-			return (err);
+	//	if ((err = pthread_create(&thread[i], NULL, f, &setup[i + 1])) != 0)
+	//		return (err);
+	f(&setup[i + 1]);
 		i++;
 	}
-	while (i > 0)
-	{
-		i--;
-		if ((err = pthread_join(thread[i], NULL)) != 0)
-			return (err);
-	}
+	//while (i > 0)
+	//{
+	//	i--;
+	//	if ((err = pthread_join(thread[i], NULL)) != 0)
+	//		return (err);
+	//}
 	return (err);
 }
 
@@ -59,7 +61,5 @@ int				ft_fractol_pthread(t_setup *setup, size_t frac, \
 		i++;
 	}
 	err = ft_pthread_process(setup, f);
-	mlx_put_image_to_window(SETUP.mlx->mlx_ptr, MLX->win_ptr, \
-			IMG->image_addr, 0, 0);
 	return (err);
 }

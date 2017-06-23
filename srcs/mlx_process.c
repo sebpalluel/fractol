@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:01:08 by psebasti          #+#    #+#             */
-/*   Updated: 2017/06/21 14:48:59 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/06/23 13:50:00 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ static int	ft_expose_hook(void *param)
 	setup = param;
 	printf("test expose hook\n");
 	ft_imgclean(IMG, SETUP.width, SETUP.height);
-	mlx_put_image_to_window(MLX->mlx_ptr, MLX->win_ptr, IMG->image, 0, 0);
+	//mlx_put_image_to_window(MLX->mlx_ptr, MLX->win_ptr, IMG->image, 0, 0);
+	mlx_put_image_to_window(MLX->mlx_ptr, MLX->win_ptr, \
+			IMG->image, 0, 0);
 	//	if (setup->ui == 1)
 	//		ft_print_cam(setup);
 	printf("test expose hook end\n");
