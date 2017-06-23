@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:09:10 by psebasti          #+#    #+#             */
-/*   Updated: 2017/06/23 14:16:15 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/06/23 15:52:51 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 size_t		ft_fract_calc(t_setup *setup)
 {
 	printf("fract_calc f_mode %lu\n", SETUP.f_mode);
-	if (SETUP.f_mode == 0 || SETUP.f_mode == 3)
-		if (ft_fractol_pthread(setup, 0, ft_mandelbrot) != 0)
-			return (0);
-	if (SETUP.f_mode == 1 || SETUP.f_mode == 3)
-		if (ft_fractol_pthread(setup, 1, ft_julia) != 0)
-			return (0);
+	//if (SETUP.f_mode == 0 || SETUP.f_mode == 3)
+	//	if (ft_fractol_pthread(setup, 0, ft_mandelbrot) != 0)
+	//		return (0);
+	//if (SETUP.f_mode == 1 || SETUP.f_mode == 3)
+	//	if (ft_fractol_pthread(setup, 1, ft_julia) != 0)
+	//		return (0);
 	return (1);
 }
 
@@ -30,10 +30,10 @@ int			main(int ac, char **av)
 
 	if (ac == 2)
 	{
-		setup = (t_setup *)malloc(sizeof(t_setup) * NUM_THREAD + 2);
+		setup = (t_setup *)malloc(sizeof(t_setup) * NUM_THREAD + 1); // 2
 		if (!setup)
 			return (-1);
-		ft_bzero(setup, sizeof(t_setup) * (NUM_THREAD + 2));
+		ft_bzero(setup, sizeof(t_setup) * (NUM_THREAD + 1)); // 2
 		printf("before setup main\n");
 		if (ft_setup_mode(av, setup, 1))
 			ft_mlx_process(setup);

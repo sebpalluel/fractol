@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:01:08 by psebasti          #+#    #+#             */
-/*   Updated: 2017/06/23 13:50:00 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/06/23 16:19:59 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static int	ft_expose_hook(void *param)
 	t_setup *setup;
 
 	setup = param;
-	printf("test expose hook\n");
-	ft_imgclean(IMG, SETUP.width, SETUP.height);
+	printf("test expose hook, width %lu, height %lu\n", SETUP.width, SETUP.height);
+	//ft_imgclean(IMG, SETUP.width, SETUP.height);
 	//mlx_put_image_to_window(MLX->mlx_ptr, MLX->win_ptr, IMG->image, 0, 0);
-	mlx_put_image_to_window(MLX->mlx_ptr, MLX->win_ptr, \
-			IMG->image, 0, 0);
+	//mlx_put_image_to_window(MLX->mlx_ptr, MLX->win_ptr, \
+	//		IMG->image, 0, 0);
 	//	if (setup->ui == 1)
 	//		ft_print_cam(setup);
 	printf("test expose hook end\n");
@@ -71,5 +71,5 @@ void	ft_put_pxl_to_img(t_setup *setup, t_fract *fract, t_color *clr)
 {
 	if (fract->x < setup->width && fract->y < setup->height)
 		ft_memcpy(setup->img->image_addr + \
-				(int)(4 * WIDTH * fract->y + fract->x * 4), clr, sizeof(int));
+ 				(int)(4 * WIDTH * fract->y + fract->x * 4), clr, sizeof(int));
 }
