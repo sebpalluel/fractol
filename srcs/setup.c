@@ -6,13 +6,13 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:58:45 by psebasti          #+#    #+#             */
-/*   Updated: 2017/06/27 14:42:13 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/06/27 14:57:58 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-size_t			ft_setup_fract_init(t_setup *setup)
+static size_t	ft_setup_fract_init(t_setup *setup)
 {
 	size_t i;
 	size_t j;
@@ -73,16 +73,19 @@ int				ft_error_usage()
 	return (0);
 }
 
-size_t			ft_setup_mode(char **av, t_setup *setup, size_t mode)
+size_t			ft_setup_mode(t_setup *setup, size_t mode)
 {
 	size_t		i;
 
 	i = 0;
 	if (mode)
 	{
-		av[0] = "223";
 		SETUP.f_mode = 666;
-			return (ft_error_usage());
+		setup->width = WIDTH;
+		setup->height = HEIGHT;
+		MLX = ft_initwindow("fractol", SETUP.width, SETUP.height);
+		IMG = ft_imgnew(MLX->mlx_ptr, SETUP.width, SETUP.height);
+		ft_setup_fract_init(&SETUP);
 		return (1);
 	}
 	else
@@ -94,6 +97,8 @@ size_t			ft_setup_mode(char **av, t_setup *setup, size_t mode)
 		}
 		if (SETUP.f_mode != 666)
 			ft_putendl("program exited normally");
+		else
+			ft_error_usage();
 		exit (0);
 	}
 }

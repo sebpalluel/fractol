@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:09:10 by psebasti          #+#    #+#             */
-/*   Updated: 2017/06/27 14:42:15 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/06/27 15:01:09 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static void		ft_setup_fract_select(char **av, t_setup *setup)
 		setup->f_mode = 2;
 	else if (ft_strcmp(av[1], "all") == 0)
 		setup->f_mode = 3;
-	printf("f_mode setup %lu\n", setup->f_mode);
 }
 
 int			main(int ac, char **av)
@@ -46,16 +45,12 @@ int			main(int ac, char **av)
 		setup = (t_setup *)malloc(sizeof(t_setup)); // 2
 		if (!setup)
 			return (-1);
-		//ft_bzero(setup, sizeof(t_setup)); // 2
-		setup->width = WIDTH;
-		setup->height = HEIGHT;
-		MLX = ft_initwindow("fractol", SETUP.width, SETUP.height);
-		IMG = ft_imgnew(MLX->mlx_ptr, SETUP.width, SETUP.height);
-		ft_setup_fract_init(&SETUP);
+		ft_bzero(setup, sizeof(t_setup)); // 2
+		ft_setup_mode(setup, 1);
 		ft_setup_fract_select(av, setup);
-		if (MLX && IMG)
+		if (MLX && IMG && SETUP.f_mode != 666)
 			ft_mlx_process(setup);
-		return (ft_setup_mode(av, setup, 0));
+		return (ft_setup_mode(setup, 0));
 	}
 	return (ft_error_usage());
 }

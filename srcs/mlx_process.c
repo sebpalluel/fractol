@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:01:08 by psebasti          #+#    #+#             */
-/*   Updated: 2017/06/23 16:38:02 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/06/27 14:59:43 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	ft_key_hook(int keycode, t_setup *setup)
 
 	printf("test key hook %d param %p\n", keycode, setup);
 	if (keycode == ESC)
-	ft_setup_mode(0, setup, 0);
+	ft_setup_mode(setup, 0);
 	//	//ft_scale_cam(setup, keycode);
 	//	//ft_rot_cam(setup, keycode);
 	//	//ft_orient_cam(setup, keycode);
