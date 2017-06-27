@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:20 by psebasti          #+#    #+#             */
-/*   Updated: 2017/06/27 17:05:16 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/06/27 18:04:47 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,20 @@ void		ft_mandelbrot_init(t_setup *setup)
 	ft_color(MAN->clr[2], 255, 255, 255);
 }
 
-t_color 	*ft_mandelbrot_give_color(t_setup *setup)
+//t_color 	*ft_mandelbrot_give_color(t_setup *setup)
+//{
+//	printf("col\n");
+//	return (MAN->clr[2]);
+//}
+
+static void	put_pxl_to_img(t_setup *setup, t_fract *fract, int color)
 {
-	printf("col\n");
-	return (MAN->clr[2]);
+	if (fract->x < setup->width && fract->y < setup->height)
+	{
+		color = mlx_get_color_value(MLX->mlx_ptr, color);
+	ft_memcpy(setup->img->image_addr + \
+			(int)(4 * WIDTH * fract->y + fract->x * 4), &color, sizeof(int));
+	}
 }
 
 static void	ft_mandelbrot_calc(t_setup *setup)
@@ -48,9 +58,9 @@ static void	ft_mandelbrot_calc(t_setup *setup)
 		MAN->it++;
 	}
 	if (MAN->it == MAN->it_max)
-		ft_put_pxl_to_img(setup, MAN, MAN->clr[0]);
+		put_pxl_to_img(setup, MAN, 0x000000);
 	else
-		ft_put_pxl_to_img(setup, MAN, ft_mandelbrot_give_color(setup));
+		put_pxl_to_img(setup, MAN, 265 * MAN->it);
 }
 
 void		*ft_mandelbrot(void *tab)
