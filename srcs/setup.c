@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:58:45 by psebasti          #+#    #+#             */
-/*   Updated: 2017/06/27 15:02:08 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/06/27 16:58:38 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,6 @@ static void		ft_setup_delete(size_t i, t_setup *setup)
 	}
 }
 
-int				ft_error_usage()
-{
-	ft_putendl("Usage:\n\
-			./fractol \"mandelbrot\"\n\
-			./fractol \"julia\"\n\
-			./fractol \"burningship\"\n\
-			./fractol \"all\"");
-	return (0);
-}
 
 size_t			ft_setup_mode(t_setup *setup, size_t mode)
 {

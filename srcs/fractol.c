@@ -6,11 +6,21 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:09:10 by psebasti          #+#    #+#             */
-/*   Updated: 2017/06/27 15:15:39 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/06/27 16:58:36 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
+
+int				ft_error_usage()
+{
+	ft_putendl("Usage:\n\
+			./fractol \"mandelbrot\"\n\
+			./fractol \"julia\"\n\
+			./fractol \"burningship\"\n\
+			./fractol \"all\"");
+	return (0);
+}
 
 size_t			ft_fract_calc(t_setup *setup)
 {
@@ -23,6 +33,16 @@ size_t			ft_fract_calc(t_setup *setup)
 	return (1);
 }
 
+static void		ft_setup_f_mode(t_setup *setup)
+{
+	if (setup->f_mode == 0 || setup->f_mode == 3)
+		ft_mandelbrot_init(setup);
+	if (setup->f_mode == 1 || setup->f_mode == 3)
+		ft_julia_init(setup);
+	//if (setup->f_mode == 2 || setup->f_mode == 3)
+	//ft_burningship_init(setup);
+}
+
 static size_t	ft_setup_fract_select(char **av, t_setup *setup)
 {
 	if (ft_strcmp(av[1], "mandelbrot") == 0)
@@ -33,6 +53,7 @@ static size_t	ft_setup_fract_select(char **av, t_setup *setup)
 		setup->f_mode = 2;
 	else if (ft_strcmp(av[1], "all") == 0)
 		setup->f_mode = 3;
+	ft_setup_f_mode(&SETUP);
 	return (ft_fract_calc(setup));
 }
 

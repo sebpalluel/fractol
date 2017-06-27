@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:20 by psebasti          #+#    #+#             */
-/*   Updated: 2017/06/27 15:16:17 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/06/27 17:05:16 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ void		ft_mandelbrot_init(t_setup *setup)
 	MAN->y1 = -1.9;
 	MAN->c_r = 0.285;
 	MAN->c_i = 0.01;
-	ft_color(MAN->clr[0], 0, 0, 0);
+	ft_color(MAN->clr[0], 255, 0, 0);
 	ft_color(MAN->clr[1], 0, 0, 0);
 	ft_color(MAN->clr[2], 255, 255, 255);
 }
 
 t_color 	*ft_mandelbrot_give_color(t_setup *setup)
 {
-
-	return (MAN->clr[0]);
+	printf("col\n");
+	return (MAN->clr[2]);
 }
 
 static void	ft_mandelbrot_calc(t_setup *setup)
@@ -48,7 +48,7 @@ static void	ft_mandelbrot_calc(t_setup *setup)
 		MAN->it++;
 	}
 	if (MAN->it == MAN->it_max)
-		ft_put_pxl_to_img(setup, MAN, MAN->clr[2]);
+		ft_put_pxl_to_img(setup, MAN, MAN->clr[0]);
 	else
 		ft_put_pxl_to_img(setup, MAN, ft_mandelbrot_give_color(setup));
 }
@@ -61,7 +61,7 @@ void		*ft_mandelbrot(void *tab)
 	setup = (t_setup *)tab;
 	MAN->x = 0;
 	tmp = MAN->y;
-	printf("tmp %f\n", setup->fract[0]->y);
+	printf("tmp %f\n", MAN->y);
 	printf("width %lu\n", setup->width);
 	while (MAN->x < setup->width)
 	{
