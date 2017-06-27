@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:25:18 by psebasti          #+#    #+#             */
-/*   Updated: 2017/05/31 15:22:40 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/06/27 14:41:59 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 int		ft_error_usage();
 size_t	ft_setup_mode(char **av, t_setup *setup, size_t mode);
+size_t	ft_setup_fract_init(t_setup *setup);
 int		ft_fractol_pthread(t_setup *setup, size_t frac, void *(*f)(void *));
 void	ft_mlx_process(t_setup *setup);
 void	ft_put_pxl_to_img(t_setup *setup, t_fract *fract, t_color *clr);
