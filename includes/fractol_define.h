@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:31:26 by psebasti          #+#    #+#             */
-/*   Updated: 2017/06/23 15:45:25 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/06/23 16:34:54 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@
 # define LERP_IN	setup->map->lerp_in
 # define LERP_OUT	setup->map->lerp_out
 # define CLR		setup->map->curr_clr
-# define CAM		setup[0].cam
-# define MLX		setup[0].mlx
-# define IMG		setup[0].img
+# define CAM		setup->cam
+# define MLX		setup->mlx
+# define IMG		setup->img
 //# define MAT		setup->cam->matrix
 
 #endif

@@ -6,18 +6,16 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:01:08 by psebasti          #+#    #+#             */
-/*   Updated: 2017/06/23 16:19:59 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/06/23 16:38:02 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-static int	ft_expose_hook(void *param)
+static int	ft_expose_hook(t_setup *setup)
 {
-	t_setup *setup;
-
-	setup = param;
-	printf("test expose hook, width %lu, height %lu\n", SETUP.width, SETUP.height);
+	printf("test expose hook, width %lu, height %lu\n", \
+			setup->width, setup->height);
 	//ft_imgclean(IMG, SETUP.width, SETUP.height);
 	//mlx_put_image_to_window(MLX->mlx_ptr, MLX->win_ptr, IMG->image, 0, 0);
 	//mlx_put_image_to_window(MLX->mlx_ptr, MLX->win_ptr, \
@@ -30,14 +28,12 @@ static int	ft_expose_hook(void *param)
 	return (1);
 }
 
-static int	ft_key_hook(int keycode, void *param)
+static int	ft_key_hook(int keycode, t_setup *setup)
 {
-	t_setup *setup;
 
-	setup = param;
 	printf("test key hook %d param %p\n", keycode, setup);
 	if (keycode == ESC)
-		ft_setup_mode(0, setup, 0);
+	ft_setup_mode(0, setup, 0);
 	//	//ft_scale_cam(setup, keycode);
 	//	//ft_rot_cam(setup, keycode);
 	//	//ft_orient_cam(setup, keycode);
