@@ -6,14 +6,14 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:31:26 by psebasti          #+#    #+#             */
-/*   Updated: 2017/06/23 16:34:54 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/06/28 17:59:03 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_DEFINE_H
 # define FRACTOL_DEFINE_H
 
-# define WIDTH		1920
+# define WIDTH		1080
 # define HEIGHT		1080
 # define NUM_THREAD	0
 

@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:25:18 by psebasti          #+#    #+#             */
-/*   Updated: 2017/06/27 14:53:52 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/06/28 18:30:39 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	ft_mlx_process(t_setup *setup);
 void	ft_put_pxl_to_img(t_setup *setup, t_fract *fract, t_color *clr);
 void	ft_mandelbrot_init(t_setup *setup);
 void	*ft_mandelbrot(void *setup);
-t_color	*ft_mandelbrot_give_color(t_setup *setup);
 void	ft_julia_init(t_setup *setup);
 void	*ft_julia(void *setup);
 t_color	*ft_julia_give_color(t_setup *setup);

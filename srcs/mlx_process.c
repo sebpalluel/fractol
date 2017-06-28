@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:01:08 by psebasti          #+#    #+#             */
-/*   Updated: 2017/06/27 18:04:45 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/06/28 18:29:04 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,10 @@ void		ft_mlx_process(t_setup *setup)
 
 void	ft_put_pxl_to_img(t_setup *setup, t_fract *fract, t_color *clr)
 {
-	if (fract->x < setup->width && fract->y < setup->height)
-	ft_memcpy(setup->img->image_addr + \
-			(int)(4 * WIDTH * fract->y + fract->x * 4), clr, sizeof(int));
-	//unsigned int	index;
+	unsigned int	index;
 
-	//index = fract->x * IMG->bbp / 8 + fract->y * IMG->size_x;
-	//ft_memcpy(IMG->image_addr + ind, clr, sizeof(int));
-	//
-	//IMG->image_addr[index] = clr->b;
-	//IMG->image_addr[index + 1] = clr->g;
-	//IMG->image_addr[index + 2] = clr->r;
+	index = (fract->y * setup->width) * (IMG->bbp >> 3) \
+			+ fract->x * (IMG->bbp >> 3);
+	if (fract->x < setup->width && fract->y < setup->height)
+		ft_memcpy(setup->img->image_addr + index, clr, sizeof(int));
 }
