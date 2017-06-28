@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:58:45 by psebasti          #+#    #+#             */
-/*   Updated: 2017/06/27 16:58:38 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/06/28 19:06:59 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static size_t	ft_setup_fract_init(t_setup *setup)
 	size_t j;
 
 	i = 0;
-	j = 0;
 	if (!(setup->fract = (t_fract **)ft_memalloc(sizeof(t_fract *) * 4)))
 		return (0);
 	while (i < 3)
@@ -27,6 +26,7 @@ static size_t	ft_setup_fract_init(t_setup *setup)
 				|| !(setup->fract[i]->clr = (t_color **)\
 					ft_memalloc(sizeof(t_color *) * 4)))
 			return (0);
+	j = 0;
 		while (j < 3)
 		{
 			if (!(setup->fract[i]->clr[j] = ft_colornew(0, 0, 0)))
@@ -62,7 +62,6 @@ static void		ft_setup_delete(size_t i, t_setup *setup)
 		free (setup[i].fract);
 	}
 }
-
 
 size_t			ft_setup_mode(t_setup *setup, size_t mode)
 {

@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:25:18 by psebasti          #+#    #+#             */
-/*   Updated: 2017/06/28 18:30:39 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/06/28 19:43:13 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	ft_mandelbrot_init(t_setup *setup);
 void	*ft_mandelbrot(void *setup);
 void	ft_julia_init(t_setup *setup);
 void	*ft_julia(void *setup);
-t_color	*ft_julia_give_color(t_setup *setup);
 size_t	ft_fract_calc(t_setup *setup);
 int		ft_mouse_hook(int mousecode, int x, int y, t_setup *param);
 
