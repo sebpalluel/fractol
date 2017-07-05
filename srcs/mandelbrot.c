@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:20 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/05 19:18:38 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/05 20:11:54 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void		ft_mandelbrot_calc(t_setup *setup)
 		MAN->z_i = 2 * MAN->z_i * MAN->tmp + MAN->c_i;
 		MAN->it++;
 	}
-	ft_put_pxl_to_img(setup, MAN, ft_mandelbrot_give_color(setup));
+	ft_put_pxl_to_img(setup, MAN->pos, ft_mandelbrot_give_color(setup));
 }
 
 void			*ft_mandelbrot(void *tab)
