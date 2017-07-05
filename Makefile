@@ -6,7 +6,7 @@
 #*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2017/01/09 14:05:27 by psebasti          #+#    #+#             *#
-#*   Updated: 2017/05/05 16:52:33 by psebasti         ###   ########.fr       *#
+#*   Updated: 2017/07/05 19:58:03 by psebasti         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -18,6 +18,7 @@ SRC 		=	srcs/fractol.c \
 				srcs/mouse.c \
 				srcs/mandelbrot.c \
 				srcs/julia.c \
+				srcs/cantor.c \
 				srcs/utils.c \
 #				srcs/draw_line.c \
 #				srcs/cam.c \

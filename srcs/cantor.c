@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/05 18:18:36 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/05 19:12:40 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/05 19:58:09 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,36 +40,31 @@ static t_color 	*ft_cantor_give_color(t_setup *setup)
 	return (CAN->clr[2]);
 }
 
-void		ft_draw_line(t_setup *setup, t_vec3 start, t_vec3 end)
+void		ft_draw_line(t_setup *setup, t_vec3 *start, t_vec3 *end)
 {
 	t_vec3	tmp;
 
-	if ((end.x - start.x) * (end.x - start.x) < 2 && (end.y - start.y) \
-			* (end.y - start.y) < 2)
+	if ((end->x - start->x) * (end->x - start->x) < 2 && (end->y - start->y) \
+			* (end->y - start->y) < 2)
 		return ;
-	tmp.x = (start.x + end.x) * 0.5;
-	tmp.y = (start.y + end.y) * 0.5;
+	tmp.x = (start->x + end->x) * 0.5;
+	tmp.y = (start->y + end->y) * 0.5;
 	ft_put_pxl_to_img(setup, CAN, ft_cantor_give_color(setup));
-	ft_draw_line(setup, start, tmp);
-	ft_draw_line(setup, tmp, end);
+	ft_draw_line(setup, start, &tmp);
+	ft_draw_line(setup, &tmp, end);
 }
 
-static void		ft_cantor_calc(t_setup *setup)
+static void		ft_cantor_calc(t_setup *setup, double x, double y, double len)
 {
 	if (len >= 1)
 	{
-		p1 = (t_cord*)malloc(sizeof(t_cord));
-		p2 = (t_cord*)malloc(sizeof(t_cord));
-		p1->x = x;
-		p1->y = y;
-		p2->x = x + len;
-		p2->y = y;
-		ft_draw_line(p1, p2, e);
-		y += 20;
-		cantor_line(x, y, len / 3, e);
-		cantor_line(x + len * 2 / 3, y, len / 3, e);
+		CAN->vec.x = CAN->pos.x + len;
+		CAN->vec.y = CAN->pos.y;
+		ft_draw_line(setup, &CAN->pos, &CAN->vec);
+		CAN->pos.y += 20;
+		ft_cantor_calc(setup, x, y, len / 3);
+		ft_cantor_calc(setup, x + len * 2 / 3, y, len / 3);
 	}
-	ft_put_pxl_to_img(setup, CAN, ft_cantor_give_color(setup));
 }
 
 void			*ft_cantor(void *tab)
@@ -78,18 +73,18 @@ void			*ft_cantor(void *tab)
 	double	tmp;
 
 	setup = (t_setup *)tab;
-	CAN->x = 0;
-	tmp = CAN->y;
-		while (CAN->x < setup->width)
+	CAN->pos.x = 0;
+	tmp = CAN->pos.y;
+		while (CAN->pos.x < setup->width)
 	{
-		CAN->y = tmp;
-		while (CAN->y < setup->height)
+		CAN->pos.y = tmp;
+		while (CAN->pos.y < setup->height)
 		{
-			ft_cantor_calc(setup);
-			CAN->y++;
+			ft_cantor_calc(setup, CAN->pos.x, CAN->pos.y, setup->width);
+			CAN->pos.y += 100;
 			CAN->it++;
 		}
-		CAN->x++;
+		CAN->pos.x++;
 	}
 	return (tab);
 }

@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:32:54 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/05 19:24:46 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/05 19:27:57 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ typedef struct		s_fract
 {
 	double			it;
 	double			it_max;
-	double			x;
-	double			y;
 	t_vec3			pos;
 	t_vec3			vec;
 	t_vec3			focus;
