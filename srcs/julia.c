@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:36 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/05 18:29:50 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/05 19:20:23 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void			ft_julia_init(t_setup *setup)
 {
 	JUL->it_max = 50;
 	JUL->zoom = 200;
-	JUL->x1 = -2.0;
-	JUL->y1 = -1.9;
+	JUL->vec.x = -2.0;
+	JUL->vec.y = -1.9;
 	JUL->c_r = 0.285;
 	JUL->c_i = 0.01;
 	ft_color(JUL->clr[0], 0, 0, 0);
@@ -47,8 +47,8 @@ static t_color	*ft_julia_give_color(t_setup *setup)
 
 static void		ft_julia_calc(t_setup *setup)
 {
-	JUL->z_r = JUL->x / JUL->zoom + JUL->x1;
-	JUL->z_i = JUL->y / JUL->zoom + JUL->y1;
+	JUL->z_r = JUL->pos.x / JUL->zoom + JUL->vec.x;
+	JUL->z_i = JUL->pos.y / JUL->zoom + JUL->vec.y;
 	JUL->it = 0;
 	while (JUL->z_r * JUL->z_r + JUL->z_i *
 			JUL->z_i < 4 && JUL->it < JUL->it_max)
@@ -68,17 +68,17 @@ void			*ft_julia(void *tab)
 	double	tmp;
 
 	setup = (t_setup *)tab;
-	JUL->x = 0;
-	tmp = JUL->y;
-	while (JUL->x < setup->width)
+	JUL->pos.x = 0;
+	tmp = JUL->pos.y;
+	while (JUL->pos.x < setup->width)
 	{
-		JUL->y = tmp;
-		while (JUL->y < setup->height)
+		JUL->pos.y = tmp;
+		while (JUL->pos.y < setup->height)
 		{
 			ft_julia_calc(setup);
-			JUL->y++;
+			JUL->pos.y++;
 		}
-		JUL->x++;
+		JUL->pos.x++;
 	}
 	return (tab);
 }

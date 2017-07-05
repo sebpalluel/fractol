@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/05 18:18:36 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/05 19:05:09 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/05 19:12:40 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,18 @@ static t_color 	*ft_cantor_give_color(t_setup *setup)
 	return (CAN->clr[2]);
 }
 
-void		ft_draw_line(t_setup *setup, t_vec3 *start, t_vec3 *end)
+void		ft_draw_line(t_setup *setup, t_vec3 start, t_vec3 end)
 {
 	t_vec3	tmp;
 
-	if ((end->x - start->x) * (end->x - start->x) < 2 && (end->y - start->y) * (end->y - start->y) < 2)
+	if ((end.x - start.x) * (end.x - start.x) < 2 && (end.y - start.y) \
+			* (end.y - start.y) < 2)
 		return ;
-	tmp.x = (start->x + end->x) * 0.5;
-	tmp.y = (start->y + end->y) * 0.5;
+	tmp.x = (start.x + end.x) * 0.5;
+	tmp.y = (start.y + end.y) * 0.5;
 	ft_put_pxl_to_img(setup, CAN, ft_cantor_give_color(setup));
-	ft_draw_line(setup, start, &tmp);
-	ft_draw_line(setup, &tmp, end);
+	ft_draw_line(setup, start, tmp);
+	ft_draw_line(setup, tmp, end);
 }
 
 static void		ft_cantor_calc(t_setup *setup)

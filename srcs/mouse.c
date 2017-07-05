@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:55:22 by psebasti          #+#    #+#             */
-/*   Updated: 2017/06/21 14:48:55 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/05 19:25:11 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 static void	ft_zoom(int x, int y, t_fract *fract)
 {
-	fract->x2 = x;
-	fract->y2 = y;
-	fract->x1 = (x / fract->zoom + fract->x1) - ((fract->zoom * 1.3) / 2);
-	fract->x1 += ((fract->zoom * 1.3) / 2) - (x / (fract->zoom * 1.3));
-	fract->y1 = (y / fract->zoom + fract->y1) - ((fract->zoom * 1.3) / 2);
-	fract->y1 += ((fract->zoom * 1.3) / 2) - (y / (fract->zoom * 1.3));
+	fract->focus.x = x;
+	fract->focus.y = y;
+	fract->vec.x = (x / fract->zoom + fract->vec.x) - ((fract->zoom * 1.3) / 2);
+	fract->vec.x += ((fract->zoom * 1.3) / 2) - (x / (fract->zoom * 1.3));
+	fract->vec.y = (y / fract->zoom + fract->vec.y) - ((fract->zoom * 1.3) / 2);
+	fract->vec.y += ((fract->zoom * 1.3) / 2) - (y / (fract->zoom * 1.3));
 	fract->zoom *= 1.3;
 	fract->it_max++;
 }
 
 static void	ft_dezoom(t_fract *fract)
 {
-	fract->x1 = (fract->x2 / fract->zoom + fract->x1) - ((fract->zoom / 1.3) / 2);
-	fract->x1 += ((fract->zoom / 1.3) / 2) - (fract->x2 / (fract->zoom / 1.3));
-	fract->y1 = (fract->y2 / fract->zoom + fract->y1) - ((fract->zoom / 1.3) / 2);
-	fract->y1 += ((fract->zoom / 1.3) / 2) - (fract->y2 / (fract->zoom / 1.3));
+	fract->vec.x = (fract->focus.x / fract->zoom + fract->vec.x) - ((fract->zoom / 1.3) / 2);
+	fract->vec.x += ((fract->zoom / 1.3) / 2) - (fract->focus.x / (fract->zoom / 1.3));
+	fract->vec.y = (fract->focus.y / fract->zoom + fract->vec.y) - ((fract->zoom / 1.3) / 2);
+	fract->vec.y += ((fract->zoom / 1.3) / 2) - (fract->focus.y / (fract->zoom / 1.3));
 	fract->zoom /= 1.3;
 	fract->it_max--;
 }
