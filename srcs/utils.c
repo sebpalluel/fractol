@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 17:50:09 by psebasti          #+#    #+#             */
-/*   Updated: 2017/06/27 18:05:38 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/05 18:28:59 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int				ft_fractol_pthread(t_setup *setup, size_t frac, \
 	//	i++;
 	//}
 	SETUP.fract[frac]->y = 0;
-	SETUP.fract[frac]->y_max = HEIGHT;
 	err = ft_pthread_process(setup, f);
 	return (err);
 }
