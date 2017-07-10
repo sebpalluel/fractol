@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/05 18:18:36 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/10 19:19:22 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/10 22:31:37 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void			ft_cantor_init(t_setup *setup)
 {
-	CAN->it_max = 50;
 	ft_color(CAN->clr[0], 0, 0, 0);
 	ft_color(CAN->clr[1], 255, 255, 255);
 	ft_color(CAN->clr[2], 255, 255, 255);
@@ -40,12 +39,23 @@ static t_color 	*ft_cantor_give_color(t_setup *setup)
 	return (CAN->clr[2]);
 }
 
-static void		ft_draw_line(t_setup *setup, t_vec3 start, t_vec3 end)
+static void		ft_cantor_line(t_setup *setup, t_vec3 start, t_vec3 end)
 {
-	while (start.x <= end.x)
+	size_t		width;
+	double		tmp;
+
+	width = 0;
+	while (width < 5)
 	{
-		ft_put_pxl_to_img(setup, start, ft_cantor_give_color(setup));
-		start.x++;
+		tmp = start.x;
+		while (start.x <= end.x)
+		{
+			ft_put_pxl_to_img(setup, start, ft_cantor_give_color(setup));
+			start.x++;
+		}
+		start.x = tmp;
+		start.y++;
+		width++;
 	}
 }
 
@@ -59,7 +69,7 @@ static void		ft_cantor_calc(t_setup *setup, double x, double y, double len)
 		tmp.y = y;
 		CAN->vec.x = x + len;
 		CAN->vec.y = y;
-		ft_draw_line(setup, tmp, CAN->vec);
+		ft_cantor_line(setup, tmp, CAN->vec);
 		y += 25;
 		ft_cantor_calc(setup, x, y, len / 3);
 		ft_cantor_calc(setup, x + len * 2 / 3, y, len / 3);
@@ -74,11 +84,11 @@ void			*ft_cantor(void *tab)
 	CAN->it = 0;
 	setup = (t_setup *)tab;
 	CAN->pos.x = 0;
-		while (CAN->pos.y <= setup->height)
-		{
-			ft_cantor_calc(setup, CAN->pos.x, CAN->pos.y, setup->width);
-			CAN->pos.y += 100;
-			CAN->it++;
-		}
+	while (CAN->pos.y <= setup->height)
+	{
+		ft_cantor_calc(setup, CAN->pos.x, CAN->pos.y, setup->width);
+		CAN->pos.y += 100;
+		CAN->it++;
+	}
 	return (tab);
 }
