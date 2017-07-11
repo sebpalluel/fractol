@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:31:26 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/11 14:28:42 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/11 14:55:09 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define WIDTH		1080
 # define HEIGHT		1080
 # define NUM_THREAD	0
-# define FNUM	4
+# define FNUM		4
 
 # define MAX_STEP	250
 # define STEP		10
