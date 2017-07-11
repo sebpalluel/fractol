@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:09:10 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/05 19:59:26 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/11 14:27:30 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,38 @@ int				ft_error_usage()
 			./fractol \"mandelbrot\"\n\
 			./fractol \"julia\"\n\
 			./fractol \"cantor\"\n\
+			./fractol \"burningship\"\n\
 			./fractol \"all\"");
 	return (0);
 }
 
 size_t			ft_fract_calc(t_setup *setup)
 {
-	if (SETUP.f_mode == 0 || SETUP.f_mode == 3)
+	if (SETUP.f_mode == 0 || SETUP.f_mode == 4)
 		if (ft_fractol_pthread(setup, 0, ft_mandelbrot) != 0)
 			return (0);
-	if (SETUP.f_mode == 1 || SETUP.f_mode == 3)
+	if (SETUP.f_mode == 1 || SETUP.f_mode == 4)
 		if (ft_fractol_pthread(setup, 1, ft_julia) != 0)
 			return (0);
-	if (SETUP.f_mode == 2 || SETUP.f_mode == 3)
+	if (SETUP.f_mode == 2 || SETUP.f_mode == 4)
 		if (ft_fractol_pthread(setup, 2, ft_cantor) != 0)
+			return (0);
+	if (SETUP.f_mode == 3 || SETUP.f_mode == 4)
+		if (ft_fractol_pthread(setup, 3, ft_burningship) != 0)
 			return (0);
 	return (1);
 }
 
 static void		ft_setup_f_mode(t_setup *setup)
 {
-	if (setup->f_mode == 0 || setup->f_mode == 3)
+	if (setup->f_mode == 0 || setup->f_mode == 4)
 		ft_mandelbrot_init(setup);
-	if (setup->f_mode == 1 || setup->f_mode == 3)
+	if (setup->f_mode == 1 || setup->f_mode == 4)
 		ft_julia_init(setup);
-	if (setup->f_mode == 2 || setup->f_mode == 3)
+	if (setup->f_mode == 2 || setup->f_mode == 4)
 		ft_cantor_init(setup);
+	if (setup->f_mode == 3 || setup->f_mode == 4)
+		ft_burningship_init(setup);
 }
 
 static size_t	ft_setup_fract_select(char **av, t_setup *setup)
@@ -54,8 +60,10 @@ static size_t	ft_setup_fract_select(char **av, t_setup *setup)
 		setup->f_mode = 1;
 	else if (ft_strcmp(av[1], "cantor") == 0)
 		setup->f_mode = 2;
-	else if (ft_strcmp(av[1], "all") == 0)
+	else if (ft_strcmp(av[1], "burningship") == 0)
 		setup->f_mode = 3;
+	else if (ft_strcmp(av[1], "all") == 0)
+		setup->f_mode = 4;
 	ft_setup_f_mode(&SETUP);
 	return (ft_fract_calc(setup));
 }

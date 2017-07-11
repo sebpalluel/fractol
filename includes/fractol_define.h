@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:31:26 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/05 18:21:36 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/11 14:28:42 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define WIDTH		1080
 # define HEIGHT		1080
 # define NUM_THREAD	0
+# define FNUM	4
 
 # define MAX_STEP	250
 # define STEP		10
@@ -57,6 +58,7 @@
 # define MAN		setup->fract[0]
 # define JUL		setup->fract[1]
 # define CAN		setup->fract[2]
+# define BUR		setup->fract[3]
 # define MAP		setup->map
 # define M_WIDTH	setup->map->width
 # define M_HEIGHT	setup->map->height
