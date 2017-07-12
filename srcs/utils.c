@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 17:50:09 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/05 19:20:42 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/12 21:10:59 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,25 @@
 
 static int		ft_pthread_process(t_setup *setup, void *(*f)(void *))
 {
-	//pthread_t	thread[NUM_THREAD];
-	//int			i;
+	pthread_t	thread[NUM_THREAD];
+	int			i;
 	int			err;
 
-	//i = 0;
+	i = 0;
 	err = 0;
-	//while (i < NUM_THREAD)
-	//{
-		//	if ((err = pthread_create(&thread[i], NULL, f, &setup[i + 1])) != 0)
-		//		return (err);
-	//	f(&setup[i + 1]);
-	//	i++;
-	//}
-	//while (i > 0)
-	//{
-	//	i--;
-	//	if ((err = pthread_join(thread[i], NULL)) != 0)
-	//		return (err);
-	//}
-	f(&SETUP);
+	while (i < NUM_THREAD)
+	{
+		if ((err = pthread_create(&thread[i], NULL, f, &setup[i + 1])) != 0)
+			return (err);
+		f(&setup[i + 1]);
+		i++;
+	}
+	while (i > 0)
+	{
+		i--;
+		if ((err = pthread_join(thread[i], NULL)) != 0)
+			return (err);
+	}
 	return (err);
 }
 
@@ -41,27 +40,29 @@ int				ft_fractol_pthread(t_setup *setup, size_t frac, \
 		void *(*f)(void *))
 {
 	int			err;
-	//	size_t		i;
-	//	size_t		j;
-	//
-	//	i = 1;
-	//	j = 0;
-	//
-	//while (i < NUM_THREAD + 1)
-	//{
-	//	ft_memcpy((void *)&(setup[i]).fract[frac], (void *)&(SETUP).fract[frac],\
-	//			sizeof(t_fract));
-	//	while (j < 3)
-	//	{	
-	//		ft_memcpy((void *)&(setup[i]).fract[frac]->clr[j], \
-	//				(void *)&(SETUP).fract[frac]->clr[j], sizeof(t_color));
-	//		j++;
-	//	}
-	//	setup[i].fract[frac]->y = 100 * i;
-	//	setup[i].fract[frac]->y_max = 100 * (i + 1);
-	//	i++;
-	//}
-	SETUP.fract[frac]->pos.y = 0;
+	size_t		i;
+	size_t		j;
+	size_t		inc;
+
+	i = 0;
+	j = 0;
+	inc = setup->height / NUM_THREAD;
+	while (i < NUM_THREAD)
+	{
+		ft_memcpy(&(setup[i + 1]).fract[frac], &(SETUP).fract[frac],\
+				sizeof(t_fract));
+		while (j < 3)
+		{	
+			ft_memcpy(&(setup[i + 1]).fract[frac]->clr[j], \
+					&(SETUP).fract[frac]->clr[j], sizeof(t_color));
+			j++;
+		}
+		setup[i + 1].fract[frac]->pos.y = inc * i;
+		setup[i + 1].fract[frac]->height_max = inc * (i + 1);
+		printf("fract->y %f fract->height_max %f\n", setup[i + 1].fract[frac]->pos.y, \
+				setup[i + 1].fract[frac]->height_max);
+		i++;
+	}
 	err = ft_pthread_process(setup, f);
 	return (err);
 }

@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 14:12:05 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/12 15:23:47 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/12 21:02:53 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void			*ft_burningship(void *tab)
 	while (BUR->pos.x < setup->width)
 	{
 		BUR->pos.y = tmp;
-		while (BUR->pos.y < setup->height)
+		while (BUR->pos.y < BUR->height_max)
 		{
 			ft_burningship_calc(setup);
 			BUR->pos.y++;

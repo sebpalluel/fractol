@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:20 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/05 20:11:54 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/12 21:07:17 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void			*ft_mandelbrot(void *tab)
 		while (MAN->pos.x < setup->width)
 	{
 		MAN->pos.y = tmp;
-		while (MAN->pos.y < setup->height)
+		while (MAN->pos.y < MAN->height_max)
 		{
 			ft_mandelbrot_calc(setup);
 			MAN->pos.y++;

@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:36 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/05 20:12:05 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/12 21:03:08 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void			*ft_julia(void *tab)
 	while (JUL->pos.x < setup->width)
 	{
 		JUL->pos.y = tmp;
-		while (JUL->pos.y < setup->height)
+		while (JUL->pos.y < JUL->height_max)
 		{
 			ft_julia_calc(setup);
 			JUL->pos.y++;
