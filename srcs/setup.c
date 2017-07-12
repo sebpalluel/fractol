@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:58:45 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/11 15:19:38 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/12 19:39:49 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,31 @@ static size_t	ft_setup_fract_init(t_setup *setup)
 	return (1);
 }
 
+static void		ft_setup_delete_mlx_img(size_t i, t_setup *setup)
+{
+	if (i == 0)
+	{
+		if (IMG)
+			ft_imgdel(IMG, MLX->mlx_ptr);
+		if (MLX)
+			ft_mlxdelete(MLX);
+	}
+	else
+	{
+		if (setup[i].img)
+			free (setup[i].img);
+		if (setup[i].mlx)
+			free (setup[i].mlx);
+	}
+}
+
 static void		ft_setup_delete(size_t i, t_setup *setup)
 {
 	int			frac_n;
 	int			col_n;
 
 	frac_n = -1;
-	if (IMG)
-		ft_imgdel(IMG, MLX->mlx_ptr);
-	if (MLX)
-		ft_mlxdelete(MLX);
+	ft_setup_delete_mlx_img(i, setup);
 	if (setup[i].fract)
 	{
 		while (++frac_n < FNUM)
@@ -63,6 +78,30 @@ static void		ft_setup_delete(size_t i, t_setup *setup)
 	}
 }
 
+static size_t	ft_setup_init(t_setup *setup)
+{
+	size_t		i;
+	t_setup		*tab;
+
+	tab = setup;
+	i = 1;
+	while (i < NUM_THREAD + 1)
+	{
+		ft_memcpy(&setup[i], &SETUP, sizeof(t_setup));
+		setup[i].mlx = (t_mlx *)ft_memalloc(sizeof(t_mlx));
+		setup[i].img = (t_img *)ft_memalloc(sizeof(t_img));
+		if (!setup[i].mlx || !setup[i].img)
+			return (0);
+		ft_memcpy(&(setup[i]).mlx, &(SETUP).mlx, sizeof(t_mlx));
+		ft_memcpy((void *)&(setup[i]).img, (void *)&(SETUP).img,\
+				sizeof(t_img));
+		if (!ft_setup_fract_init(&setup[i]))
+			return (0);
+		i++;
+	}
+	return (ft_fract_calc(setup));
+}
+
 size_t			ft_setup_mode(t_setup *setup, size_t mode)
 {
 	size_t		i;
@@ -71,11 +110,12 @@ size_t			ft_setup_mode(t_setup *setup, size_t mode)
 	if (mode)
 	{
 		SETUP.f_mode = 666;
-		setup->width = WIDTH;
-		setup->height = HEIGHT;
+		SETUP.width = WIDTH;
+		SETUP.height = HEIGHT;
 		MLX = ft_initwindow("fractol", SETUP.width, SETUP.height);
 		IMG = ft_imgnew(MLX->mlx_ptr, SETUP.width, SETUP.height);
-		ft_setup_fract_init(&SETUP);
+		if (!ft_setup_fract_init(&SETUP) && ft_setup_init(setup) != 1)
+			return (0);
 		return (1);
 	}
 	else
