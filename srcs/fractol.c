@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:09:10 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/11 14:27:30 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/12 17:55:15 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ int				main(int ac, char **av)
 
 	if (ac == 2)
 	{
-		setup = (t_setup *)malloc(sizeof(t_setup)); // 2
+		setup = (t_setup *)malloc(sizeof(t_setup) * NUM_THREAD + 2);
 		if (!setup)
 			return (-1);
-		ft_bzero(setup, sizeof(t_setup)); // 2
+		ft_bzero(setup, sizeof(t_setup) * (NUM_THREAD + 2));
 		ft_setup_mode(setup, 1);
 		if (MLX && IMG && ft_setup_fract_select(av, setup) \
 				&& SETUP.f_mode != 666)
