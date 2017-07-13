@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:58:45 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/12 21:06:46 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/13 13:40:02 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static size_t	ft_setup_init(t_setup *setup)
 		setup[i].img = (t_img *)ft_memalloc(sizeof(t_img));
 		if (!setup[i].mlx || !setup[i].img)
 			return (ERROR);
-		ft_memcpy(&(setup[i]).mlx, &(SETUP).mlx, sizeof(t_mlx));
+		ft_memcpy((setup[i]).mlx, &(SETUP).mlx, sizeof(t_mlx));
 		ft_memcpy((void *)&(setup[i]).img, (void *)&(SETUP).img,\
 				sizeof(t_img));
 		if (!ft_setup_fract_init(&setup[i]))

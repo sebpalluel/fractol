@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/05 18:18:36 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/12 20:59:17 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/13 13:35:55 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ void			*ft_cantor(void *tab)
 	CAN->it = 0;
 	setup = (t_setup *)tab;
 	CAN->pos.x = 0;
+	printf("CAN->y %f CAN->height_max %f\n", CAN->pos.y, \
+				CAN->height_max);
 	while (CAN->pos.y < CAN->height_max)
 	{
 		ft_cantor_calc(setup, CAN->pos.x, CAN->pos.y, setup->width);

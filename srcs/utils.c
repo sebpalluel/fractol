@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 17:50:09 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/12 21:10:59 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/13 13:39:21 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,19 @@ int				ft_fractol_pthread(t_setup *setup, size_t frac, \
 	inc = setup->height / NUM_THREAD;
 	while (i < NUM_THREAD)
 	{
-		ft_memcpy(&(setup[i + 1]).fract[frac], &(SETUP).fract[frac],\
-				sizeof(t_fract));
+		ft_memcpy(setup[i + 1].fract[frac], SETUP.fract[frac], sizeof(t_fract));
 		while (j < 3)
 		{	
-			ft_memcpy(&(setup[i + 1]).fract[frac]->clr[j], \
-					&(SETUP).fract[frac]->clr[j], sizeof(t_color));
+			ft_memcpy(setup[i + 1].fract[frac]->clr[j], \
+					SETUP.fract[frac]->clr[j], sizeof(t_color));
 			j++;
 		}
 		setup[i + 1].fract[frac]->pos.y = inc * i;
 		setup[i + 1].fract[frac]->height_max = inc * (i + 1);
 		printf("fract->y %f fract->height_max %f\n", setup[i + 1].fract[frac]->pos.y, \
 				setup[i + 1].fract[frac]->height_max);
+		printf("test color thread r %d\n", setup[i + 1].fract[frac]->clr[2]->r);
+		printf("test color main r %d\n", setup[0].fract[frac]->clr[2]->r);
 		i++;
 	}
 	err = ft_pthread_process(setup, f);
