@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/05 18:18:36 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/13 13:35:55 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/25 22:44:22 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,14 @@ static void		ft_cantor_calc(t_setup *setup, double x, double y, double len)
 {
 	t_vec3		tmp;
 
-	if (len >= 1)
+	if (len > 1. && y <= CAN->height_max)
 	{
 		tmp.x = x;
 		tmp.y = y;
 		CAN->vec.x = x + len;
 		CAN->vec.y = y;
 		ft_cantor_line(setup, tmp, CAN->vec);
-		y += 25;
+		y += 40.;
 		ft_cantor_calc(setup, x, y, len / 3);
 		ft_cantor_calc(setup, x + len * 2 / 3, y, len / 3);
 	}
@@ -77,19 +77,12 @@ static void		ft_cantor_calc(t_setup *setup, double x, double y, double len)
 
 void			*ft_cantor(void *tab)
 {
-	t_setup	*setup;
+	t_setup		*setup;
 
 	setup = tab;
-	CAN->it = 0;
 	setup = (t_setup *)tab;
 	CAN->pos.x = 0;
-	printf("CAN->y %f CAN->height_max %f\n", CAN->pos.y, \
-				CAN->height_max);
-	while (CAN->pos.y < CAN->height_max)
-	{
-		ft_cantor_calc(setup, CAN->pos.x, CAN->pos.y, setup->width);
-		CAN->pos.y += 100;
-		CAN->it++;
-	}
+	ft_cantor_calc(setup, CAN->pos.x, CAN->pos.y, setup->width);
+	CAN->pos.y = CAN->height_max;
 	return (tab);
 }

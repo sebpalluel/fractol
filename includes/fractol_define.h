@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:31:26 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/25 19:43:24 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/25 22:52:35 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@
 # define R_KEY		15
 # define F_KEY		3
 # define L_KEY		37
+
+# define MOUSE_LEFT 1
+# define MOUSE_RIGHT 2
+# define MOUSE_SIDE 3
+# define WHEEL_UP 4
+# define WHEEL_DOWN 5
 
 # define BLUE		0x0000FF
 # define GREEN		0x00F611

@@ -6,16 +6,16 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:01:08 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/25 19:35:38 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/25 22:50:02 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-static int	ft_expose_hook(t_setup *setup)
+int			ft_expose_hook(t_setup *setup)
 {
-//	ft_imgclean(IMG, SETUP.width, SETUP.height);
-//	ft_fract_calc(setup);
+	ft_imgclean(IMG, SETUP.width, SETUP.height);
+	ft_fract_calc(setup);
 	mlx_put_image_to_window(MLX->mlx_ptr, MLX->win_ptr, IMG->image, 0, 0);
 	//	if (setup->ui == 1)
 	//		ft_print_cam(setup);

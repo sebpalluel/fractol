@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:55:22 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/05 19:25:11 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/25 22:57:18 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,22 @@ int			ft_mouse_hook(int mousecode, int x, int y, t_setup *param)
 
 	setup = param;
 	frac = -1;
-	if (SETUP.f_mode < 3)
+	if (SETUP.f_mode != 0)
 	{
-		if (mousecode == 4 || mousecode == 1)
+		if (mousecode == WHEEL_UP || mousecode == MOUSE_LEFT)
 			ft_zoom(x, y, SETUP.fract[SETUP.f_mode]);
-		else if (mousecode == 5 || mousecode == 2)
+		else if (mousecode == WHEEL_DOWN || mousecode == MOUSE_RIGHT)
 			ft_dezoom(SETUP.fract[SETUP.f_mode]);
 	}
 	else
 	{
-		if (mousecode == 4 || mousecode == 1)
-			while (++frac < 3)
+		if (mousecode == WHEEL_UP || mousecode == MOUSE_LEFT)
+			while (++frac < FNUM)
 				ft_zoom(x, y, SETUP.fract[frac]);
-		else if (mousecode == 5 || mousecode == 2)
-			while (++frac < 3)
+		else if (mousecode == WHEEL_DOWN || mousecode == MOUSE_RIGHT)
+			while (++frac < FNUM)
 				ft_dezoom(SETUP.fract[frac]);
 	}
+	ft_expose_hook(setup);
 	return (1);
 }

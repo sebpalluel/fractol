@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:32:54 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/25 19:35:12 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/25 19:45:44 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ typedef struct		s_setup
 	size_t			height;
 	size_t			ui;
 	size_t			f_mode;
-	pthread_mutex_t	mutex;
 	t_mlx			*mlx;
 	//t_map			*map;
 	//t_cam			*cam;
