@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:20 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/13 21:55:34 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/25 15:48:47 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ static t_color 	*ft_mandelbrot_give_color(t_setup *setup)
 		MAN->clr[2]->b = (double)(MAN->clr[1]->b - MAN->clr[0]->b) * coef;
 	else
 		MAN->clr[2]->b = MAN->clr[1]->b;
+		printf("col 0 : r %d, g %d, b %d; col 1 : r %d, g %d, b %d; col 2 : r %d, g %d, b %d\n", \
+				MAN->clr[0]->r,MAN->clr[0]->g,MAN->clr[0]->b,\
+				MAN->clr[1]->r,MAN->clr[1]->g,MAN->clr[1]->b,\
+				MAN->clr[2]->r,MAN->clr[2]->g,MAN->clr[2]->b);
 	return (MAN->clr[2]);
 }
 
@@ -72,7 +76,7 @@ void			*ft_mandelbrot(void *tab)
 	setup = (t_setup *)tab;
 	MAN->pos.x = 0;
 	tmp = MAN->pos.y;
-		while (MAN->pos.x < setup->width)
+	while (MAN->pos.x < setup->width)
 	{
 		MAN->pos.y = tmp;
 		while (MAN->pos.y < MAN->height_max)

@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:58:45 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/13 13:50:18 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/25 15:48:41 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ static void		ft_setup_delete(size_t i, t_setup *setup)
 			col_n = -1;
 			while (++col_n < 4)
 				free (setup[i].fract[frac_n]->clr[col_n]);
+			free (setup[i].fract[frac_n]->clr);
 			free (setup[i].fract[frac_n]);
 		}
 		free (setup[i].fract);
@@ -122,10 +123,12 @@ size_t			ft_setup_mode(t_setup *setup, size_t mode)
 			ft_setup_delete(i, setup);
 			i++;
 		}
+		free (setup);
 		if (SETUP.f_mode != 666)
 			ft_putendl("program exited normally");
 		else
 			ft_error_usage();
+//		while (42);
 		exit (0);
 	}
 }
