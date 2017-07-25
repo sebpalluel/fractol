@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:01:08 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/25 19:15:42 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/25 19:35:38 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,10 @@ void		ft_mlx_process(t_setup *setup)
 
 void	ft_put_pxl_to_img(t_setup *setup, t_vec3 pos, t_color *clr)
 {
-	pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 	unsigned int	index;
 
-	pthread_mutex_lock (&mutex);
 	index = (pos.y * setup->width) * (IMG->bbp >> 3) \
 			+ pos.x * (IMG->bbp >> 3);
 	if (pos.x < setup->width && pos.y < setup->height)
 		ft_memcpy(setup->img->image_addr + index, clr, sizeof(int));
-	pthread_mutex_unlock(&mutex);
 }

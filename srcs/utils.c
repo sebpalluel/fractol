@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 17:50:09 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/25 18:43:42 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/25 19:43:42 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static int		ft_pthread_process(t_setup *setup, void *(*f)(void *))
 	{
 		if ((err = pthread_create(&thread[i], NULL, f, &setup[i + 1])) != 0)
 			return (err);
-		f(&setup[i + 1]);
 		i++;
 	}
 	while (i > 0)
@@ -78,7 +77,9 @@ int				ft_fractol_pthread(t_setup *setup, size_t frac, \
 		//		printf("test color main r %d\n", setup[0].fract[frac]->clr[2]->r);
 		i++;
 	}
+	pthread_mutex_init(&SETUP.mutex, NULL);
 	err = ft_pthread_process(setup, f);
+	pthread_mutex_destroy(&SETUP.mutex);
 //	SETUP.fract[frac]->pos.y = 0;
 //	SETUP.fract[frac]->height_max = HEIGHT;
 //	err = OK;

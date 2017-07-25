@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:31:26 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/25 16:33:49 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/25 19:43:24 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define WIDTH		1080
 # define HEIGHT		1080
-# define NUM_THREAD	4
+# define NUM_THREAD	8
 # define FNUM		4
 
 # define ERROR		1
