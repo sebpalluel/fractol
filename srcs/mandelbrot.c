@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:20 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/25 15:48:47 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/25 17:37:09 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,29 @@
 
 void			ft_mandelbrot_init(t_setup *setup)
 {
-	MAN->it_max = 50;
-	MAN->zoom = 200;
-	MAN->vec.x = -2.0;
-	MAN->vec.y = -1.9;
-	MAN->c_r = 0.285;
-	MAN->c_i = 0.01;
-	ft_color(MAN->clr[0], 0, 0, 0);
-	ft_color(MAN->clr[1], 255, 255, 255);
-	ft_color(MAN->clr[2], 255, 255, 255);
+	size_t		i;
+
+	//MAN->it_max = 50;
+	//MAN->zoom = 200;
+	//MAN->vec.x = -2.0;
+	//MAN->vec.y = -1.9;
+	//MAN->c_r = 0.285;
+	//MAN->c_i = 0.01;
+	i = 0;
+	while (i < NUM_THREAD + 1)
+	{
+		setup[i].fract[0]->it_max = 50;
+		setup[i].fract[0]->zoom = 200;
+		setup[i].fract[0]->vec.x = -2.;
+		setup[i].fract[0]->vec.y = -1.9;
+		setup[i].fract[0]->c_r = 0.285;
+		setup[i].fract[0]->c_i = 0.01;
+		ft_color(setup[i].fract[0]->clr[0], 0, 0, 0);
+		ft_color(setup[i].fract[0]->clr[1], 255, 255, 255);
+		ft_color(setup[i].fract[0]->clr[2], 255, 255, 255);
+		i++;
+	}
+
 }
 
 static t_color 	*ft_mandelbrot_give_color(t_setup *setup)
@@ -30,6 +44,7 @@ static t_color 	*ft_mandelbrot_give_color(t_setup *setup)
 	double coef;
 
 	coef = MAN->it/50.;
+	//printf("coef %f\n", coef);
 	if (MAN->clr[1]->r - MAN->clr[0]->r)
 		MAN->clr[2]->r = (double)(MAN->clr[1]->r - MAN->clr[0]->r) * coef;
 	else
@@ -42,10 +57,10 @@ static t_color 	*ft_mandelbrot_give_color(t_setup *setup)
 		MAN->clr[2]->b = (double)(MAN->clr[1]->b - MAN->clr[0]->b) * coef;
 	else
 		MAN->clr[2]->b = MAN->clr[1]->b;
-		printf("col 0 : r %d, g %d, b %d; col 1 : r %d, g %d, b %d; col 2 : r %d, g %d, b %d\n", \
-				MAN->clr[0]->r,MAN->clr[0]->g,MAN->clr[0]->b,\
-				MAN->clr[1]->r,MAN->clr[1]->g,MAN->clr[1]->b,\
-				MAN->clr[2]->r,MAN->clr[2]->g,MAN->clr[2]->b);
+	//	printf("col 0 : r %d, g %d, b %d; col 1 : r %d, g %d, b %d; col 2 : r %d, g %d, b %d\n", \
+	//			MAN->clr[0]->r,MAN->clr[0]->g,MAN->clr[0]->b,\
+	//			MAN->clr[1]->r,MAN->clr[1]->g,MAN->clr[1]->b,\
+	//			MAN->clr[2]->r,MAN->clr[2]->g,MAN->clr[2]->b);
 	return (MAN->clr[2]);
 }
 
