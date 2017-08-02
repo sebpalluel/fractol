@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:01:08 by psebasti          #+#    #+#             */
-/*   Updated: 2017/08/02 17:07:05 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/08/02 18:00:26 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,16 @@ static void ft_move_arrow_all(int keycode, float amp_x, float amp_y, \
 
 	frac = -1;
 		if (keycode == LEFT)
-			while (++frac < FNUM)
+			while (++frac < FNUM - 1)
 			SETUP.fract[frac]->vec.x += amp_x;
 		else if (keycode == RIGHT)
-			while (++frac < FNUM)
+			while (++frac < FNUM - 1)
 			SETUP.fract[frac]->vec.x -= amp_x;
 		else if (keycode == UP)
-			while (++frac < FNUM)
+			while (++frac < FNUM - 1)
 			SETUP.fract[frac]->vec.y += amp_y;
 		else if (keycode == DOWN)
-			while (++frac < FNUM)
+			while (++frac < FNUM - 1)
 			SETUP.fract[frac]->vec.y -= amp_y;
 }
 
@@ -52,7 +52,7 @@ void	ft_move_arrow(int keycode, t_setup *setup)
 			(setup->width / 10.));
 	amp_y =  setup->height / (SETUP.fract[SETUP.f_mode]->zoom * \
 			(setup->height / 10.));
-	if (SETUP.f_mode != 4)
+	if (SETUP.f_mode < 3)
 	{
 		if (keycode == LEFT)
 			SETUP.fract[SETUP.f_mode]->vec.x += amp_x;
@@ -69,15 +69,11 @@ void	ft_move_arrow(int keycode, t_setup *setup)
 
 static int	ft_key_hook(int keycode, t_setup *setup)
 {
-
-	//printf("test key hook %d param %p\n", keycode, setup);
 	if (keycode == ESC)
 		ft_setup_mode(setup, 0);
+	ft_switch_fract(keycode, setup);
 	ft_change_color(keycode, setup);
 	ft_move_arrow(keycode, setup);
-	//	//ft_scale_cam(setup, keycode);
-	//	//ft_rot_cam(setup, keycode);
-	//	//ft_orient_cam(setup, keycode);
 	if (keycode == G_KEY)
 		setup->ui = !setup->ui ? 1 : 0;
 	ft_expose_hook(setup);

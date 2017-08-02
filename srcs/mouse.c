@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:55:22 by psebasti          #+#    #+#             */
-/*   Updated: 2017/08/02 16:40:52 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/08/02 18:00:42 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int			ft_mouse_hook(int mousecode, int x, int y, t_setup *setup)
 	int		frac;
 
 	frac = -1;
-	if (SETUP.f_mode != 4)
+	if (SETUP.f_mode < 3)
 	{
 		if (mousecode == WHEEL_UP || mousecode == MOUSE_LEFT)
 			ft_zoom(x, y, SETUP.fract[SETUP.f_mode]);
@@ -61,10 +61,10 @@ int			ft_mouse_hook(int mousecode, int x, int y, t_setup *setup)
 	else
 	{
 		if (mousecode == WHEEL_UP || mousecode == MOUSE_LEFT)
-			while (++frac < FNUM)
+			while (++frac < FNUM - 1)
 				ft_zoom(x, y, SETUP.fract[frac]);
 		else if (mousecode == WHEEL_DOWN || mousecode == MOUSE_RIGHT)
-			while (++frac < FNUM)
+			while (++frac < FNUM - 1)
 				ft_dezoom(SETUP.fract[frac]);
 	}
 	ft_expose_hook(setup);

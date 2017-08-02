@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:31:26 by psebasti          #+#    #+#             */
-/*   Updated: 2017/08/01 18:49:08 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/08/02 17:56:27 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # define SETUP		setup[0]
 # define MAN		setup->fract[0]
 # define JUL		setup->fract[1]
-# define CAN		setup->fract[2]
-# define BUR		setup->fract[3]
+# define BUR		setup->fract[2]
+# define CAN		setup->fract[3]
 # define MAP		setup->map
 # define M_WIDTH	setup->map->width
 # define M_HEIGHT	setup->map->height

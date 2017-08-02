@@ -6,73 +6,86 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/02 14:19:33 by psebasti          #+#    #+#             */
-/*   Updated: 2017/08/02 16:34:05 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/08/02 18:00:34 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-//static void	ft_print_color(t_setup *setup)
-//{	
-//	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 0, 16711680,
-//			" key Q/W   LERP_IN R:");
-//	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 5, 0, 16711680,
-//			ft_ftoa((int)(SETUP.fract[SETUP.f_mode]->clr[0]->r)));
-//	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 20, 65280,
-//			" key A/S   LERP_IN G:");
-//	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 5, 20, 65280,
-//			ft_ftoa((int)(SETUP.fract[SETUP.f_mode]->clr[0]->g)));
-//	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 40, 255,
-//			" key Z/X   LERP_IN B:");
-//	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 5, 40, 255,
-//			ft_ftoa((int)(SETUP.fract[SETUP.f_mode]->clr[0]->b)));
-//	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 4, 0, 16711680,
-//			" key E/R   LERP_OUT R:");
-//	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 2.15, 0, 16711680,
-//			ft_ftoa((int)(SETUP.fract[SETUP.f_mode]->clr[1]->r)));
-//	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 4, 20, 65280,
-//			" key D/F   LERP_OUT G:");
-//	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 2.15, 20, 652805,
-//			ft_ftoa((int)(SETUP.fract[SETUP.f_mode]->clr[1]->g)));
-//	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 4, 40, 255,
-//			" key C/V   LERP_OUT B:");
-//	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 2.15, 40, 255,
-//			ft_ftoa((int)(SETUP.fract[SETUP.f_mode]->clr[1]->b)));
-//}
+static void	ft_print_color(t_setup *setup)
+{	
+	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 100, 16711680,
+			" key Q/W   LERP_IN R:");
+	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 5, 100, 16711680,
+			ft_ftoa((int)(SETUP.fract[SETUP.f_mode]->clr[0]->r)));
+	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 120, 65280,
+			" key A/S   LERP_IN G:");
+	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 5, 120, 65280,
+			ft_ftoa((int)(SETUP.fract[SETUP.f_mode]->clr[0]->g)));
+	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 140, 255,
+			" key Z/X   LERP_IN B:");
+	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 5, 140, 255,
+			ft_ftoa((int)(SETUP.fract[SETUP.f_mode]->clr[0]->b)));
+	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 4, 100, 16711680,
+			" key E/R   LERP_OUT R:");
+	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 2.15, 100, 16711680,
+			ft_ftoa((int)(SETUP.fract[SETUP.f_mode]->clr[1]->r)));
+	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 4, 120, 65280,
+			" key D/F   LERP_OUT G:");
+	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 2.15, 120, 652805,
+			ft_ftoa((int)(SETUP.fract[SETUP.f_mode]->clr[1]->g)));
+	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 4, 140, 255,
+			" key C/V   LERP_OUT B:");
+	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 2.15, 140, 255,
+			ft_ftoa((int)(SETUP.fract[SETUP.f_mode]->clr[1]->b)));
+}
 
 static void	ft_print_fract_info(t_setup *setup)
 {
 	if (SETUP.f_mode == 0)
 		mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 0, 16777215,
-			" mandelbrot");
+				" mandelbrot");
 	if (SETUP.f_mode == 1)
-		mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 0, 16777215,
-			" julia");
+		mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 0, 16777215, " julia");
 	if (SETUP.f_mode == 2)
 		mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 0, 16777215,
-			" cantor");
+				" burningship");
 	if (SETUP.f_mode == 3)
-		mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 0, 16777215,
-			" burningship");
+		mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 0, 16777215, " cantor");
 	if (SETUP.f_mode == 4)
-		mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 0, 16777215,
-			" all");
+		mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 0, 16777215, " all");
 	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 20, 16777215,
 			" iteration : ");
 	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 8, 20, 16777215,
 			ft_ftoa(SETUP.fract[SETUP.f_mode]->it_max));
-	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 40, 16777215,
-			" pos x/y : ");
+	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 40, 16777215, " pos x/y : ");
 	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 8, 40, 16777215,
 			ft_ftoa(SETUP.fract[SETUP.f_mode]->vec.x));
 	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 4, 40, 16777215,
 			ft_ftoa(SETUP.fract[SETUP.f_mode]->vec.y));
+	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 60, 8224125,
+			" switch to fract [1] mandelbrot [2] julia [3] burningship \
+			[4] cantor [0] all");
 }
 
 void		ft_print(t_setup *setup)
 {
 	ft_print_fract_info(setup);
-	//ft_print_color(setup);
+	ft_print_color(setup);
+}
+
+void	ft_switch_fract(int keycode, t_setup *setup)
+{
+	if (keycode == ONE)
+		SETUP.f_mode = 0;
+	if (keycode == TWO)
+		SETUP.f_mode = 1;
+	if (keycode == THREE)
+		SETUP.f_mode = 2;
+	if (keycode == FOUR)
+		SETUP.f_mode = 3;
+	if (keycode == ZERO)
+		SETUP.f_mode = 4;
 }
 
 void	ft_change_color(int keycode, t_setup *setup)
