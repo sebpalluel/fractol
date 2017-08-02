@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:20 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/25 19:50:27 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/29 16:45:29 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@ void			ft_mandelbrot_init(t_setup *setup)
 {
 	MAN->it_max = 50;
 	MAN->zoom = 200;
-	MAN->vec.x = -2.0;
-	MAN->vec.y = -1.9;
-	MAN->c_r = 0.285;
-	MAN->c_i = 0.01;
+	MAN->vec.x = -2.65;
+	MAN->vec.y = -2.45;
+	MAN->c_r = -0.285;
+	MAN->c_i = -0.01;
 	ft_color(MAN->clr[0], 0, 0, 0);
 	ft_color(MAN->clr[1], 255, 255, 255);
+	ft_color(MAN->clr[2], 255, 255, 255);
 }
 
 static t_color 	*ft_mandelbrot_give_color(t_setup *setup)
@@ -30,15 +31,15 @@ static t_color 	*ft_mandelbrot_give_color(t_setup *setup)
 
 	coef = MAN->it/50.;
 	if (MAN->clr[1]->r - MAN->clr[0]->r)
-		MAN->clr[2]->r = (double)(MAN->clr[1]->r - MAN->clr[0]->r) * coef;
+		MAN->clr[2]->r = (MAN->clr[1]->r - MAN->clr[0]->r) * coef;
 	else
 		MAN->clr[2]->r = MAN->clr[1]->r;
 	if (MAN->clr[1]->g - MAN->clr[0]->g)
-		MAN->clr[2]->g = (double)(MAN->clr[1]->g - MAN->clr[0]->g) * coef;
+		MAN->clr[2]->g = (MAN->clr[1]->g - MAN->clr[0]->g) * coef;
 	else
 		MAN->clr[2]->g = MAN->clr[1]->g;
 	if (MAN->clr[1]->b - MAN->clr[0]->b)
-		MAN->clr[2]->b = (double)(MAN->clr[1]->b - MAN->clr[0]->b) * coef;
+		MAN->clr[2]->b = (MAN->clr[1]->b - MAN->clr[0]->b) * coef;
 	else
 		MAN->clr[2]->b = MAN->clr[1]->b;
 	return (MAN->clr[2]);

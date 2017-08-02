@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 14:12:05 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/12 21:02:53 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/27 15:39:37 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ static t_color	*ft_burningship_give_color(t_setup *setup)
 
 	coef = BUR->it / 25.;
 	if (BUR->clr[1]->r - BUR->clr[0]->r)
-		BUR->clr[2]->r = (double)(BUR->clr[1]->r - BUR->clr[0]->r) * coef;
+		BUR->clr[2]->r = (BUR->clr[1]->r - BUR->clr[0]->r) * coef;
 	else
 		BUR->clr[2]->r = BUR->clr[1]->r;
 	if (BUR->clr[1]->g - BUR->clr[0]->g)
-		BUR->clr[2]->g = (double)(BUR->clr[1]->g - BUR->clr[0]->g) * coef;
+		BUR->clr[2]->g = (BUR->clr[1]->g - BUR->clr[0]->g) * coef;
 	else
 		BUR->clr[2]->g = BUR->clr[1]->g;
 	if (BUR->clr[1]->b - BUR->clr[0]->b)
-		BUR->clr[2]->b = (double)(BUR->clr[1]->b - BUR->clr[0]->b) * coef;
+		BUR->clr[2]->b = (BUR->clr[1]->b - BUR->clr[0]->b) * coef;
 	else
 		BUR->clr[2]->b = BUR->clr[1]->b;
 	return (BUR->clr[2]);

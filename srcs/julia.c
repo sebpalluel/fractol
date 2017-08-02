@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:36 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/12 21:03:08 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/29 16:42:26 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void			ft_julia_init(t_setup *setup)
 {
 	JUL->it_max = 50;
 	JUL->zoom = 200;
-	JUL->vec.x = -2.0;
-	JUL->vec.y = -1.9;
-	JUL->c_r = 0.285;
-	JUL->c_i = 0.01;
+	JUL->vec.x = -2.65; // -2.
+	JUL->vec.y = -2.45; // -1.9
+	JUL->c_r = -0.285;
+	JUL->c_i = -0.02;
 	ft_color(JUL->clr[0], 0, 0, 0);
 	ft_color(JUL->clr[1], 255, 255, 255);
 	ft_color(JUL->clr[2], 255, 255, 255);
@@ -31,15 +31,15 @@ static t_color	*ft_julia_give_color(t_setup *setup)
 
 	coef = JUL->it / 25.;
 	if (JUL->clr[1]->r - JUL->clr[0]->r)
-		JUL->clr[2]->r = (double)(JUL->clr[1]->r - JUL->clr[0]->r) * coef;
+		JUL->clr[2]->r = (JUL->clr[1]->r - JUL->clr[0]->r) * coef;
 	else
 		JUL->clr[2]->r = JUL->clr[1]->r;
 	if (JUL->clr[1]->g - JUL->clr[0]->g)
-		JUL->clr[2]->g = (double)(JUL->clr[1]->g - JUL->clr[0]->g) * coef;
+		JUL->clr[2]->g = (JUL->clr[1]->g - JUL->clr[0]->g) * coef;
 	else
 		JUL->clr[2]->g = JUL->clr[1]->g;
 	if (JUL->clr[1]->b - JUL->clr[0]->b)
-		JUL->clr[2]->b = (double)(JUL->clr[1]->b - JUL->clr[0]->b) * coef;
+		JUL->clr[2]->b = (JUL->clr[1]->b - JUL->clr[0]->b) * coef;
 	else
 		JUL->clr[2]->b = JUL->clr[1]->b;
 	return (JUL->clr[2]);

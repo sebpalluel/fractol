@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 17:50:09 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/25 22:44:19 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/29 16:25:32 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ static void		ft_fractol_cpy(t_setup *setup, size_t frac, size_t i)
 
 	setup[i + 1].fract[frac]->it_max = SETUP.fract[frac]->it_max;
 	setup[i + 1].fract[frac]->zoom = SETUP.fract[frac]->zoom;
+	setup[i + 1].fract[frac]->c_r = SETUP.fract[frac]->c_r;
+	setup[i + 1].fract[frac]->c_i = SETUP.fract[frac]->c_i;
+	setup[i + 1].fract[frac]->z_i = SETUP.fract[frac]->z_i;
+	setup[i + 1].fract[frac]->z_r = SETUP.fract[frac]->z_r;
 	ft_vec3cpy(&SETUP.fract[frac]->pos, &setup[i + 1].fract[frac]->pos);
 	ft_vec3cpy(&SETUP.fract[frac]->vec, &setup[i + 1].fract[frac]->vec);
 	ft_vec3cpy(&SETUP.fract[frac]->focus, &setup[i + 1].fract[frac]->focus);

@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/05 18:18:36 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/25 22:44:22 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/07/27 15:40:05 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ static t_color 	*ft_cantor_give_color(t_setup *setup)
 
 	coef = CAN->vec.x / CAN->vec.y;
 	if (CAN->clr[1]->r - CAN->clr[0]->r)
-		CAN->clr[2]->r = (double)(CAN->clr[1]->r - CAN->clr[0]->r) * coef;
+		CAN->clr[2]->r = (CAN->clr[1]->r - CAN->clr[0]->r) * coef;
 	else
 		CAN->clr[2]->r = CAN->clr[1]->r;
 	if (CAN->clr[1]->g - CAN->clr[0]->g)
-		CAN->clr[2]->g = (double)(CAN->clr[1]->g - CAN->clr[0]->g) * coef;
+		CAN->clr[2]->g = (CAN->clr[1]->g - CAN->clr[0]->g) * coef;
 	else
 		CAN->clr[2]->g = CAN->clr[1]->g;
 	if (CAN->clr[1]->b - CAN->clr[0]->b)
-		CAN->clr[2]->b = (double)(CAN->clr[1]->b - CAN->clr[0]->b) * coef;
+		CAN->clr[2]->b = (CAN->clr[1]->b - CAN->clr[0]->b) * coef;
 	else
 		CAN->clr[2]->b = CAN->clr[1]->b;
 	return (CAN->clr[2]);

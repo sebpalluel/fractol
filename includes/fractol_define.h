@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:31:26 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/25 22:52:35 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/08/01 18:49:08 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,51 +17,10 @@
 # define HEIGHT		1080
 # define NUM_THREAD	8
 # define FNUM		4
+# define AMP		1.3
 
 # define ERROR		1
 # define OK			0
-
-# define MAX_STEP	250
-# define STEP		10
-# define AMP		20
-# define ENDIAN		0
-# define BBP		32
-
-# define ESC		53
-# define LEFT		123
-# define RIGHT		124
-# define DOWN		125
-# define UP			126
-# define MINUS		27
-# define EQUAL		24
-# define DOT_KEY	47
-# define SLASH_KEY	44
-# define CTRL		256
-# define STAR		67
-# define SLASH		75
-# define G_KEY		5
-# define W_KEY		13
-# define S_KEY		1
-# define A_KEY		0
-# define D_KEY		2
-# define Q_KEY		12
-# define E_KEY		14
-# define R_KEY		15
-# define F_KEY		3
-# define L_KEY		37
-
-# define MOUSE_LEFT 1
-# define MOUSE_RIGHT 2
-# define MOUSE_SIDE 3
-# define WHEEL_UP 4
-# define WHEEL_DOWN 5
-
-# define BLUE		0x0000FF
-# define GREEN		0x00F611
-# define BROWN		0x541919
-# define WHITE		0xFFFFFF
-
-# define MAX_SIZE	100000
 
 # define SETUP		setup[0]
 # define MAN		setup->fract[0]
@@ -78,6 +37,5 @@
 # define CAM		setup->cam
 # define MLX		setup->mlx
 # define IMG		setup->img
-//# define MAT		setup->cam->matrix
 
 #endif

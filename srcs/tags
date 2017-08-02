@@ -4,33 +4,43 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-ft_cantor	cantor.c	/^void			*ft_cantor(void *tab)$/;"	f
-ft_cantor_calc	cantor.c	/^static void		ft_cantor_calc(t_setup *setup, double x, double y, double len)$/;"	f	file:
-ft_cantor_give_color	cantor.c	/^static t_color 	*ft_cantor_give_color(t_setup *setup)$/;"	f	file:
-ft_cantor_init	cantor.c	/^void			ft_cantor_init(t_setup *setup)$/;"	f
-ft_cantor_line	cantor.c	/^static void		ft_cantor_line(t_setup *setup, t_vec3 start, t_vec3 end)$/;"	f	file:
-ft_dezoom	mouse.c	/^static void	ft_dezoom(t_fract *fract)$/;"	f	file:
-ft_error_usage	fractol.c	/^int				ft_error_usage()$/;"	f
-ft_expose_hook	mlx_process.c	/^static int	ft_expose_hook(t_setup *setup)$/;"	f	file:
-ft_fract_calc	fractol.c	/^size_t			ft_fract_calc(t_setup *setup)$/;"	f
-ft_fractol_pthread	utils.c	/^int				ft_fractol_pthread(t_setup *setup, size_t frac, \\$/;"	f
-ft_julia	julia.c	/^void			*ft_julia(void *tab)$/;"	f
-ft_julia_calc	julia.c	/^static void		ft_julia_calc(t_setup *setup)$/;"	f	file:
-ft_julia_give_color	julia.c	/^static t_color	*ft_julia_give_color(t_setup *setup)$/;"	f	file:
-ft_julia_init	julia.c	/^void			ft_julia_init(t_setup *setup)$/;"	f
-ft_key_hook	mlx_process.c	/^static int	ft_key_hook(int keycode, t_setup *setup)$/;"	f	file:
-ft_mandelbrot	mandelbrot.c	/^void			*ft_mandelbrot(void *tab)$/;"	f
-ft_mandelbrot_calc	mandelbrot.c	/^static void		ft_mandelbrot_calc(t_setup *setup)$/;"	f	file:
-ft_mandelbrot_give_color	mandelbrot.c	/^static t_color 	*ft_mandelbrot_give_color(t_setup *setup)$/;"	f	file:
-ft_mandelbrot_init	mandelbrot.c	/^void			ft_mandelbrot_init(t_setup *setup)$/;"	f
-ft_mlx_process	mlx_process.c	/^void		ft_mlx_process(t_setup *setup)$/;"	f
-ft_mouse_hook	mouse.c	/^int			ft_mouse_hook(int mousecode, int x, int y, t_setup *param)$/;"	f
-ft_pthread_process	utils.c	/^static int		ft_pthread_process(t_setup *setup, void *(*f)(void *))$/;"	f	file:
-ft_put_pxl_to_img	mlx_process.c	/^void	ft_put_pxl_to_img(t_setup *setup, t_vec3 pos, t_color *clr)$/;"	f
-ft_setup_delete	setup.c	/^static void		ft_setup_delete(size_t i, t_setup *setup)$/;"	f	file:
-ft_setup_f_mode	fractol.c	/^static void		ft_setup_f_mode(t_setup *setup)$/;"	f	file:
-ft_setup_fract_init	setup.c	/^static size_t	ft_setup_fract_init(t_setup *setup)$/;"	f	file:
-ft_setup_fract_select	fractol.c	/^static size_t	ft_setup_fract_select(char **av, t_setup *setup)$/;"	f	file:
-ft_setup_mode	setup.c	/^size_t			ft_setup_mode(t_setup *setup, size_t mode)$/;"	f
-ft_zoom	mouse.c	/^static void	ft_zoom(int x, int y, t_fract *fract)$/;"	f	file:
-main	fractol.c	/^int				main(int ac, char **av)$/;"	f
+ft_burningship	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/burningship.c	/^void			*ft_burningship(void *tab)$/;"	f	language:C
+ft_burningship_calc	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/burningship.c	/^static void		ft_burningship_calc(t_setup *setup)$/;"	f	language:C	file:
+ft_burningship_give_color	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/burningship.c	/^static t_color	*ft_burningship_give_color(t_setup *setup)$/;"	f	language:C	file:
+ft_burningship_init	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/burningship.c	/^void			ft_burningship_init(t_setup *setup)$/;"	f	language:C
+ft_cantor	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/cantor.c	/^void			*ft_cantor(void *tab)$/;"	f	language:C
+ft_cantor_calc	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/cantor.c	/^static void		ft_cantor_calc(t_setup *setup, double x, double y, double len)$/;"	f	language:C	file:
+ft_cantor_give_color	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/cantor.c	/^static t_color 	*ft_cantor_give_color(t_setup *setup)$/;"	f	language:C	file:
+ft_cantor_init	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/cantor.c	/^void			ft_cantor_init(t_setup *setup)$/;"	f	language:C
+ft_cantor_line	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/cantor.c	/^static void		ft_cantor_line(t_setup *setup, t_vec3 start, t_vec3 end)$/;"	f	language:C	file:
+ft_change_color	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/mlx_control.c	/^void	ft_change_color(int keycode, t_setup *setup)$/;"	f	language:C
+ft_dezoom	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/mouse.c	/^static void	ft_dezoom(t_fract *fract)$/;"	f	language:C	file:
+ft_error_usage	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/fractol.c	/^int				ft_error_usage()$/;"	f	language:C
+ft_expose_hook	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/mlx_process.c	/^int			ft_expose_hook(t_setup *setup)$/;"	f	language:C
+ft_fract_calc	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/fractol.c	/^size_t			ft_fract_calc(t_setup *setup)$/;"	f	language:C
+ft_fractol_cpy	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/utils.c	/^static void		ft_fractol_cpy(t_setup *setup, size_t frac, size_t i)$/;"	f	language:C	file:
+ft_fractol_pthread	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/utils.c	/^int				ft_fractol_pthread(t_setup *setup, size_t frac, \\$/;"	f	language:C
+ft_julia	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/julia.c	/^void			*ft_julia(void *tab)$/;"	f	language:C
+ft_julia_calc	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/julia.c	/^static void		ft_julia_calc(t_setup *setup)$/;"	f	language:C	file:
+ft_julia_give_color	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/julia.c	/^static t_color	*ft_julia_give_color(t_setup *setup)$/;"	f	language:C	file:
+ft_julia_init	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/julia.c	/^void			ft_julia_init(t_setup *setup)$/;"	f	language:C
+ft_key_hook	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/mlx_process.c	/^static int	ft_key_hook(int keycode, t_setup *setup)$/;"	f	language:C	file:
+ft_mandelbrot	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/mandelbrot.c	/^void			*ft_mandelbrot(void *tab)$/;"	f	language:C
+ft_mandelbrot_calc	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/mandelbrot.c	/^static void		ft_mandelbrot_calc(t_setup *setup)$/;"	f	language:C	file:
+ft_mandelbrot_give_color	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/mandelbrot.c	/^static t_color 	*ft_mandelbrot_give_color(t_setup *setup)$/;"	f	language:C	file:
+ft_mandelbrot_init	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/mandelbrot.c	/^void			ft_mandelbrot_init(t_setup *setup)$/;"	f	language:C
+ft_mlx_process	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/mlx_process.c	/^void		ft_mlx_process(t_setup *setup)$/;"	f	language:C
+ft_mouse_hook	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/mouse.c	/^int			ft_mouse_hook(int mousecode, int x, int y, t_setup *setup)$/;"	f	language:C
+ft_mouse_moove	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/mouse.c	/^int			ft_mouse_moove(int x, int y, t_setup *setup)$/;"	f	language:C
+ft_print	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/mlx_control.c	/^void	ft_print(t_setup *setup)$/;"	f	language:C
+ft_pthread_process	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/utils.c	/^static int		ft_pthread_process(t_setup *setup, void *(*f)(void *))$/;"	f	language:C	file:
+ft_put_pxl_to_img	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/mlx_process.c	/^void	ft_put_pxl_to_img(t_setup *setup, t_vec3 pos, t_color *clr)$/;"	f	language:C
+ft_setup_delete	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/setup.c	/^static void		ft_setup_delete(size_t i, t_setup *setup)$/;"	f	language:C	file:
+ft_setup_delete_mlx_img	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/setup.c	/^static void		ft_setup_delete_mlx_img(size_t i, t_setup *setup)$/;"	f	language:C	file:
+ft_setup_f_mode	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/fractol.c	/^static void		ft_setup_f_mode(t_setup *setup)$/;"	f	language:C	file:
+ft_setup_fract_init	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/setup.c	/^static size_t	ft_setup_fract_init(t_setup *setup)$/;"	f	language:C	file:
+ft_setup_fract_select	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/fractol.c	/^static size_t	ft_setup_fract_select(char **av, t_setup *setup)$/;"	f	language:C	file:
+ft_setup_init	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/setup.c	/^static size_t	ft_setup_init(t_setup *setup)$/;"	f	language:C	file:
+ft_setup_mode	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/setup.c	/^size_t			ft_setup_mode(t_setup *setup, size_t mode)$/;"	f	language:C
+ft_zoom	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/mouse.c	/^static void	ft_zoom(int x, int y, t_fract *fract)$/;"	f	language:C	file:
+main	/Users/sebastienpalluel/Documents/42/fractol/fractol/srcs/fractol.c	/^int				main(int ac, char **av)$/;"	f	language:C
