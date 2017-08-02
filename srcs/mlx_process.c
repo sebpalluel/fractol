@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:01:08 by psebasti          #+#    #+#             */
-/*   Updated: 2017/08/02 18:00:26 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/08/02 18:13:55 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	ft_move_arrow(int keycode, t_setup *setup)
 		ft_move_arrow_all(keycode, amp_x, amp_y, setup);
 }
 
+
+
 static int	ft_key_hook(int keycode, t_setup *setup)
 {
 	if (keycode == ESC)
@@ -76,6 +78,8 @@ static int	ft_key_hook(int keycode, t_setup *setup)
 	ft_move_arrow(keycode, setup);
 	if (keycode == G_KEY)
 		setup->ui = !setup->ui ? 1 : 0;
+	if (keycode == P_KEY)
+		ft_setup_f_mode(0, setup);
 	ft_expose_hook(setup);
 	return (0);
 }

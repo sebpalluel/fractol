@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/02 14:19:33 by psebasti          #+#    #+#             */
-/*   Updated: 2017/08/02 18:00:34 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/08/02 18:16:33 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ static void	ft_print_fract_info(t_setup *setup)
 void		ft_print(t_setup *setup)
 {
 	ft_print_fract_info(setup);
+	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 80, 8224125,
+			" to reset position press P");
 	ft_print_color(setup);
 }
 

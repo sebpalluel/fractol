@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:09:10 by psebasti          #+#    #+#             */
-/*   Updated: 2017/08/02 17:57:11 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/08/02 18:15:49 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,26 @@ size_t			ft_fract_calc(t_setup *setup)
 	return (ERROR);
 }
 
-static void		ft_setup_f_mode(t_setup *setup)
+void			ft_setup_f_mode(size_t trigger, t_setup *setup)
 {
-	ft_mandelbrot_init(setup);
-	ft_julia_init(setup);
-	ft_burningship_init(setup);
-	ft_cantor_init(setup);
+	if (!trigger)
+	{
+		if (setup->f_mode == 0 || setup->f_mode == 4)
+			ft_mandelbrot_init(setup);
+		if (setup->f_mode == 1 || setup->f_mode == 4)
+			ft_julia_init(setup);
+		if (setup->f_mode == 2 || setup->f_mode == 4)
+			ft_burningship_init(setup);
+		if (setup->f_mode == 3 || setup->f_mode == 4)
+			ft_cantor_init(setup);
+	}
+	else
+	{
+		ft_mandelbrot_init(setup);
+		ft_julia_init(setup);
+		ft_burningship_init(setup);
+		ft_cantor_init(setup);
+	}
 }
 
 static size_t	ft_setup_fract_select(char **av, t_setup *setup)
@@ -60,7 +74,7 @@ static size_t	ft_setup_fract_select(char **av, t_setup *setup)
 		setup->f_mode = 3;
 	else if (ft_strcmp(av[1], "all") == 0)
 		setup->f_mode = 4;
-	ft_setup_f_mode(&SETUP);
+	ft_setup_f_mode(1, &SETUP);
 	return (ft_fract_calc(setup));
 }
 

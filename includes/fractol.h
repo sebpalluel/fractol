@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:25:18 by psebasti          #+#    #+#             */
-/*   Updated: 2017/08/02 17:46:42 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/08/02 18:12:09 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 
 int		ft_error_usage();
+void	ft_setup_f_mode(size_t trigger, t_setup *setup);
 size_t	ft_setup_mode(t_setup *setup, size_t mode);
 int		ft_fractol_pthread(t_setup *setup, size_t frac, void *(*f)(void *));
 void	ft_mlx_process(t_setup *setup);
