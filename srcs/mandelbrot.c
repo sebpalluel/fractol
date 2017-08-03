@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:20 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/29 16:45:29 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/08/03 13:14:43 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void			ft_mandelbrot_init(t_setup *setup)
 {
 	MAN->it_max = 50;
 	MAN->zoom = 200;
-	MAN->vec.x = -2.65;
-	MAN->vec.y = -2.45;
+	MAN->vec.x = -3.;
+	MAN->vec.y = -2.6;
 	MAN->c_r = -0.285;
 	MAN->c_i = -0.01;
 	ft_color(MAN->clr[0], 0, 0, 0);

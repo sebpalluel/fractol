@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 14:12:05 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/27 15:39:37 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/08/03 12:52:12 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void			ft_burningship_init(t_setup *setup)
 {
 	BUR->it_max = 50;
 	BUR->zoom = 200;
-	BUR->vec.x = -2.0;
-	BUR->vec.y = -1.9;
+	BUR->vec.x = -3.;
+	BUR->vec.y = -3.;
 	ft_color(BUR->clr[0], 0, 0, 0);
 	ft_color(BUR->clr[1], 255, 255, 255);
 	ft_color(BUR->clr[2], 255, 255, 255);

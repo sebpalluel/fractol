@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:36 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/29 16:42:26 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/08/03 12:57:06 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void			ft_julia_init(t_setup *setup)
 {
 	JUL->it_max = 50;
 	JUL->zoom = 200;
-	JUL->vec.x = -2.65; // -2.
-	JUL->vec.y = -2.45; // -1.9
+	JUL->vec.x = -2.65;
+	JUL->vec.y = -2.65;
 	JUL->c_r = -0.285;
 	JUL->c_i = -0.02;
 	ft_color(JUL->clr[0], 0, 0, 0);

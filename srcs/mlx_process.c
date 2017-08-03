@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:01:08 by psebasti          #+#    #+#             */
-/*   Updated: 2017/08/02 18:13:55 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/08/03 13:27:15 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,28 @@ int			ft_expose_hook(t_setup *setup)
 	return (1);
 }
 
-static void ft_move_arrow_all(int keycode, float amp_x, float amp_y, \
-		t_setup *setup)
+static void ft_move_arrow_all(int keycode, t_setup *setup)
 {
 	int		frac;
+	float	amp_x;
+	float	amp_y;
 
+		amp_x =  setup->width / (SETUP.fract[0]->zoom * \
+				(setup->width / 10.));
+		amp_y =  setup->height / (SETUP.fract[0]->zoom * \
+				(setup->height / 10.));
 	frac = -1;
-		if (keycode == LEFT)
-			while (++frac < FNUM - 1)
+	if (keycode == LEFT)
+		while (++frac < FNUM - 1)
 			SETUP.fract[frac]->vec.x += amp_x;
-		else if (keycode == RIGHT)
-			while (++frac < FNUM - 1)
+	else if (keycode == RIGHT)
+		while (++frac < FNUM - 1)
 			SETUP.fract[frac]->vec.x -= amp_x;
-		else if (keycode == UP)
-			while (++frac < FNUM - 1)
+	else if (keycode == UP)
+		while (++frac < FNUM - 1)
 			SETUP.fract[frac]->vec.y += amp_y;
-		else if (keycode == DOWN)
-			while (++frac < FNUM - 1)
+	else if (keycode == DOWN)
+		while (++frac < FNUM - 1)
 			SETUP.fract[frac]->vec.y -= amp_y;
 }
 
@@ -48,12 +53,12 @@ void	ft_move_arrow(int keycode, t_setup *setup)
 	float	amp_x;
 	float	amp_y;
 
-	amp_x =  setup->width / (SETUP.fract[SETUP.f_mode]->zoom * \
-			(setup->width / 10.));
-	amp_y =  setup->height / (SETUP.fract[SETUP.f_mode]->zoom * \
-			(setup->height / 10.));
-	if (SETUP.f_mode < 3)
+	if (SETUP.f_mode < FNUM - 1)
 	{
+		amp_x =  setup->width / (SETUP.fract[SETUP.f_mode]->zoom * \
+				(setup->width / 10.));
+		amp_y =  setup->height / (SETUP.fract[SETUP.f_mode]->zoom * \
+				(setup->height / 10.));
 		if (keycode == LEFT)
 			SETUP.fract[SETUP.f_mode]->vec.x += amp_x;
 		else if (keycode == RIGHT)
@@ -64,7 +69,7 @@ void	ft_move_arrow(int keycode, t_setup *setup)
 			SETUP.fract[SETUP.f_mode]->vec.y -= amp_y;
 	}
 	else
-		ft_move_arrow_all(keycode, amp_x, amp_y, setup);
+		ft_move_arrow_all(keycode, setup);
 }
 
 
@@ -76,6 +81,7 @@ static int	ft_key_hook(int keycode, t_setup *setup)
 	ft_switch_fract(keycode, setup);
 	ft_change_color(keycode, setup);
 	ft_move_arrow(keycode, setup);
+	ft_form_fract(keycode, setup);
 	if (keycode == G_KEY)
 		setup->ui = !setup->ui ? 1 : 0;
 	if (keycode == P_KEY)

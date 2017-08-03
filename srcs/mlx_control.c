@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/02 14:19:33 by psebasti          #+#    #+#             */
-/*   Updated: 2017/08/02 18:16:33 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/08/03 13:29:18 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ static void	ft_print_fract_info(t_setup *setup)
 	if (SETUP.f_mode == 4)
 		mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 0, 16777215, " all");
 	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 20, 16777215,
-			" iteration : ");
-	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 8, 20, 16777215,
+			" key -/+   iteration max : ");
+	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 4, 20, 16777215,
 			ft_ftoa(SETUP.fract[SETUP.f_mode]->it_max));
 	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 40, 16777215, " pos x/y : ");
 	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, setup->width / 8, 40, 16777215,
@@ -76,6 +76,28 @@ void		ft_print(t_setup *setup)
 	ft_print_color(setup);
 }
 
+void		ft_form_fract(int keycode, t_setup *setup)
+{
+	int		frac;
+
+	frac = -1;
+	if (SETUP.f_mode < FNUM - 1)
+	{
+		if (keycode == MINUS && SETUP.fract[SETUP.f_mode]->it_max > 10)
+			SETUP.fract[SETUP.f_mode]->it_max -= 10;
+		if (keycode == EQUAL && SETUP.fract[SETUP.f_mode]->it_max < 250)
+			SETUP.fract[SETUP.f_mode]->it_max += 10;
+	}
+	if (SETUP.f_mode == FNUM)
+	{
+		if (keycode == MINUS)
+			while (++frac < FNUM && SETUP.fract[frac]->it_max > 10)
+				SETUP.fract[frac]->it_max -= 10;
+		if (keycode == EQUAL)
+			while (++frac < FNUM && SETUP.fract[frac]->it_max < 250)
+				SETUP.fract[frac]->it_max += 10;
+	}
+}
 void	ft_switch_fract(int keycode, t_setup *setup)
 {
 	if (keycode == ONE)

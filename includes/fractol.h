@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:25:18 by psebasti          #+#    #+#             */
-/*   Updated: 2017/08/02 18:12:09 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/08/03 13:16:06 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		ft_mouse_moove(int x, int y, t_setup *setup);
 int		ft_expose_hook(t_setup *setup);
 void	ft_change_color(int keycode, t_setup *setup);
 void	ft_switch_fract(int keycode, t_setup *setup);
+void	ft_form_fract(int keycode, t_setup *setup);
 void	ft_print(t_setup *setup);
 
 #endif
