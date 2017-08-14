@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:09:10 by psebasti          #+#    #+#             */
-/*   Updated: 2017/08/02 18:15:49 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/08/03 16:47:57 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int				main(int ac, char **av)
 		if (ft_setup_mode(setup, 1) != OK && \
 				ft_setup_fract_select(av, setup) != OK && \
 				SETUP.f_mode != 666)
-			ft_mlx_process(setup);
+		ft_mlx_process(setup);
 		return (ft_setup_mode(setup, 0));
 	}
 	return (ft_error_usage());

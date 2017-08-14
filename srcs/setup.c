@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:58:45 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/25 15:48:41 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/08/03 18:24:57 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static size_t	ft_setup_init(t_setup *setup)
 		setup[i].img = (t_img *)ft_memalloc(sizeof(t_img));
 		if (!setup[i].mlx || !setup[i].img)
 			return (ERROR);
-		ft_memcpy((setup[i]).mlx, &(SETUP).mlx, sizeof(t_mlx));
+		ft_memcpy(setup[i].mlx, SETUP.mlx, sizeof(t_mlx));
 		ft_memcpy(setup[i].img, SETUP.img, sizeof(t_img));
 		if (!ft_setup_fract_init(&setup[i]))
 			return (ERROR);
@@ -128,7 +128,7 @@ size_t			ft_setup_mode(t_setup *setup, size_t mode)
 			ft_putendl("program exited normally");
 		else
 			ft_error_usage();
-//		while (42);
+		while (42);
 		exit (0);
 	}
 }

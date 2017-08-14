@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:01:08 by psebasti          #+#    #+#             */
-/*   Updated: 2017/08/03 13:27:15 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/08/03 16:37:33 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ static void ft_move_arrow_all(int keycode, t_setup *setup)
 	float	amp_x;
 	float	amp_y;
 
-		amp_x =  setup->width / (SETUP.fract[0]->zoom * \
-				(setup->width / 10.));
-		amp_y =  setup->height / (SETUP.fract[0]->zoom * \
-				(setup->height / 10.));
+	amp_x =  setup->width / (SETUP.fract[0]->zoom * \
+			(setup->width / 10.));
+	amp_y =  setup->height / (SETUP.fract[0]->zoom * \
+			(setup->height / 10.));
 	frac = -1;
 	if (keycode == LEFT)
 		while (++frac < FNUM - 1)

@@ -6,33 +6,12 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:32:54 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/25 19:45:44 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/08/03 18:14:07 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_STRUCT_H
 # define FRACTOL_STRUCT_H
-
-typedef struct		s_map
-{
-	int				width;
-	int				height;
-	t_color			*lerp_in;
-	t_color			*lerp_out;
-	t_color			*curr_clr;
-	t_pix			*pix;
-	t_pix			**map;
-}					t_map;
-
-typedef struct		s_cam
-{
-	t_vec3			*pos;
-	t_vec3			*rot;
-	double			scale;
-	double			fov;
-	double			offset_x;
-	double			offset_y;
-}					t_cam;
 
 typedef struct		s_fract
 {
@@ -58,8 +37,6 @@ typedef struct		s_setup
 	size_t			ui;
 	size_t			f_mode;
 	t_mlx			*mlx;
-	//t_map			*map;
-	//t_cam			*cam;
 	t_img			*img;
 	t_fract			**fract;
 }					t_setup;
