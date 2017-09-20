@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:01:08 by psebasti          #+#    #+#             */
-/*   Updated: 2017/08/15 11:51:55 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/08/20 00:51:18 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void		ft_mlx_process(t_setup *setup)
 {
 	mlx_key_hook(MLX->win_ptr, ft_key_hook, setup);
 	mlx_expose_hook(MLX->win_ptr, ft_expose_hook, setup);
-	mlx_hook(MLX->win_ptr, MOTION_NOTIFY, POINTERMOTIONMASK, \
+	mlx_hook(MLX->win_ptr, NOTIFY, POINTERMOTIONMASK, \
 			ft_mouse_moove, setup);
 	mlx_mouse_hook(MLX->win_ptr, ft_mouse_hook, setup);
 	mlx_do_sync(MLX->mlx_ptr);

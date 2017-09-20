@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:58:45 by psebasti          #+#    #+#             */
-/*   Updated: 2017/08/03 18:24:57 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/09/20 17:50:33 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,15 @@ static void		ft_setup_delete(size_t i, t_setup *setup)
 
 static size_t	ft_setup_init(t_setup *setup)
 {
-	size_t		i;
+	int			i;
 
-	i = 1;
-	while (i < NUM_THREAD + 1)
+	SETUP.f_mode = 666;
+	SETUP.width = WIDTH;
+	SETUP.height = HEIGHT;
+	MLX = ft_initwindow("fractol", SETUP.width, SETUP.height);
+	IMG = ft_imgnew(MLX->mlx_ptr, SETUP.width, SETUP.height);
+	i = 0;
+	while (++i < NUM_THREAD + 1)
 	{
 		ft_memcpy(&setup[i], &SETUP, sizeof(t_setup));
 		setup[i].mlx = (t_mlx *)ft_memalloc(sizeof(t_mlx));
@@ -95,40 +100,30 @@ static size_t	ft_setup_init(t_setup *setup)
 		ft_memcpy(setup[i].img, SETUP.img, sizeof(t_img));
 		if (!ft_setup_fract_init(&setup[i]))
 			return (ERROR);
-		i++;
 	}
 	return (ft_fract_calc(setup));
 }
 
 size_t			ft_setup_mode(t_setup *setup, size_t mode)
 {
-	size_t		i;
+	int			i;
 
-	i = 0;
+	i = -1;
 	if (mode)
 	{
-		SETUP.f_mode = 666;
-		SETUP.width = WIDTH;
-		SETUP.height = HEIGHT;
-		MLX = ft_initwindow("fractol", SETUP.width, SETUP.height);
-		IMG = ft_imgnew(MLX->mlx_ptr, SETUP.width, SETUP.height);
 		if (ft_setup_fract_init(&SETUP) != OK  && ft_setup_init(setup) != OK)
 			return (ERROR);
 		return (OK);
 	}
 	else
 	{
-		while (i < NUM_THREAD + 1)
-		{
+		while (++i < NUM_THREAD + 1)
 			ft_setup_delete(i, setup);
-			i++;
-		}
 		free (setup);
 		if (SETUP.f_mode != 666)
 			ft_putendl("program exited normally");
 		else
 			ft_error_usage();
-		while (42);
 		exit (0);
 	}
 }
