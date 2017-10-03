@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:58:45 by psebasti          #+#    #+#             */
-/*   Updated: 2017/09/20 17:50:33 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/03 16:07:37 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,7 @@ static size_t	ft_setup_fract_init(t_setup *setup)
 static void		ft_setup_delete_mlx_img(size_t i, t_setup *setup)
 {
 	if (i == 0)
-	{
-		if (IMG)
-			ft_imgdel(IMG, MLX->mlx_ptr);
-		if (MLX)
-			ft_mlxdelete(MLX);
-	}
+			ft_mlxdelete(MLX, IMG);
 	else
 	{
 		if (setup[i].img)
@@ -119,11 +114,12 @@ size_t			ft_setup_mode(t_setup *setup, size_t mode)
 	{
 		while (++i < NUM_THREAD + 1)
 			ft_setup_delete(i, setup);
-		free (setup);
+		free(setup);
 		if (SETUP.f_mode != 666)
 			ft_putendl("program exited normally");
 		else
 			ft_error_usage();
+		while (42);
 		exit (0);
 	}
 }
