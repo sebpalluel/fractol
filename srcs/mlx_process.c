@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:01:08 by psebasti          #+#    #+#             */
-/*   Updated: 2017/08/20 00:51:18 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/10 17:30:29 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,10 @@ static int	ft_key_hook(int keycode, t_setup *setup)
 	if (keycode == ESC)
 		ft_setup_mode(setup, 0);
 	ft_switch_fract(keycode, setup);
-	ft_change_color(keycode, setup);
+	if (SETUP.f_mode < 4)
+	ft_change_color(keycode, SETUP.f_mode, setup);
+	else
+	ft_change_color(keycode, 0, setup);
 	ft_move_arrow(keycode, setup);
 	ft_form_fract(keycode, setup);
 	if (keycode == G_KEY)
