@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:01:08 by psebasti          #+#    #+#             */
-/*   Updated: 2017/10/10 17:30:29 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/11 19:09:29 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ static int	ft_key_hook(int keycode, t_setup *setup)
 		setup->ui = !setup->ui ? 1 : 0;
 	if (keycode == P_KEY)
 		ft_setup_f_mode(0, setup);
+	if (keycode == M_KEY)
+		setup->drunk_mode = !setup->drunk_mode;
 	ft_expose_hook(setup);
 	return (0);
 }
@@ -104,12 +106,15 @@ void		ft_mlx_process(t_setup *setup)
 	mlx_loop(MLX->mlx_ptr);
 }
 
-void	ft_put_pxl_to_img(t_setup *setup, t_vec3 pos, t_color *clr)
+void			ft_put_pixel(t_setup *setup, int x, int y, int color)
 {
-	unsigned int	index;
+	int			*tmp;
+	size_t		index;
 
-	index = (pos.y * setup->width) * (IMG->bbp >> 3) \
-			+ pos.x * (IMG->bbp >> 3);
-	if (pos.x < setup->width && pos.y < setup->height)
-		ft_memcpy(setup->img->image_addr + index, clr, sizeof(int));
+	if (y >= (int)setup->height || x >= (int)setup->width || x < 0 || y < 0)
+		return ;
+	index = (y * setup->width) * (IMG->bbp >> 3) \
+			+ x * (IMG->bbp >> 3);
+	tmp = (int *)&IMG->image_addr[index];
+	*tmp = color;
 }

@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/02 14:19:33 by psebasti          #+#    #+#             */
-/*   Updated: 2017/10/10 18:40:39 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/11 18:36:10 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ static void	ft_print_fract_info2(t_setup *setup)
 	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 60, 8224125,
 			" switch to fract [1] mandelbrot [2] julia [3] burningship \
 			[4] cantor [0] all");
+	mlx_string_put(MLX->mlx_ptr, MLX->win_ptr, 0, 160, 255, \
+			" to activate/deactivate drunk mode, press M");
 }
 
 static void	ft_print_fract_info(t_setup *setup)

@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:20 by psebasti          #+#    #+#             */
-/*   Updated: 2017/08/03 13:14:43 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/11 18:32:03 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void			ft_mandelbrot_init(t_setup *setup)
 	ft_color(MAN->clr[2], 255, 255, 255);
 }
 
-static t_color 	*ft_mandelbrot_give_color(t_setup *setup)
+static int 		ft_mandelbrot_give_color(t_setup *setup)
 {
 	double coef;
 
@@ -42,7 +42,12 @@ static t_color 	*ft_mandelbrot_give_color(t_setup *setup)
 		MAN->clr[2]->b = (MAN->clr[1]->b - MAN->clr[0]->b) * coef;
 	else
 		MAN->clr[2]->b = MAN->clr[1]->b;
-	return (MAN->clr[2]);
+	//if (MAN->it < 4.)
+	//	return (0xC0000000);
+	if (setup->drunk_mode || setup->f_mode == 4)
+		return ((int)ft_stoul("c0000000", 16) + ft_colortohex(MAN->clr[2]));
+	else
+		return (ft_colortohex(MAN->clr[2]));
 }
 
 static void		ft_mandelbrot_calc(t_setup *setup)
@@ -61,7 +66,8 @@ static void		ft_mandelbrot_calc(t_setup *setup)
 		MAN->z_i = 2 * MAN->z_i * MAN->tmp + MAN->c_i;
 		MAN->it++;
 	}
-	ft_put_pxl_to_img(setup, MAN->pos, ft_mandelbrot_give_color(setup));
+	ft_put_pixel(setup, MAN->pos.x, MAN->pos.y, \
+			ft_mandelbrot_give_color(setup));
 }
 
 void			*ft_mandelbrot(void *tab)

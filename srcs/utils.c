@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 17:50:09 by psebasti          #+#    #+#             */
-/*   Updated: 2017/07/29 16:25:32 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/11 18:44:15 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int				ft_fractol_pthread(t_setup *setup, size_t frac, \
 	while (i < NUM_THREAD)
 	{
 		ft_fractol_cpy(setup, frac, i);
+		setup[i + 1].drunk_mode = SETUP.drunk_mode;
 		setup[i + 1].fract[frac]->pos.y = inc * i;
 		setup[i + 1].fract[frac]->height_max = inc * (i + 1);
 		i++;

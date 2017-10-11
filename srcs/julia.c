@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:36 by psebasti          #+#    #+#             */
-/*   Updated: 2017/08/03 12:57:06 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/11 18:49:54 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void			ft_julia_init(t_setup *setup)
 	ft_color(JUL->clr[2], 255, 255, 255);
 }
 
-static t_color	*ft_julia_give_color(t_setup *setup)
+static int		ft_julia_give_color(t_setup *setup)
 {
 	double coef;
 
@@ -42,7 +42,10 @@ static t_color	*ft_julia_give_color(t_setup *setup)
 		JUL->clr[2]->b = (JUL->clr[1]->b - JUL->clr[0]->b) * coef;
 	else
 		JUL->clr[2]->b = JUL->clr[1]->b;
-	return (JUL->clr[2]);
+	if (setup->drunk_mode || setup->f_mode == 4)
+		return ((int)ft_stoul("c0000000", 16) + ft_colortohex(JUL->clr[2]));
+	else
+		return (ft_colortohex(JUL->clr[2]));
 }
 
 static void		ft_julia_calc(t_setup *setup)
@@ -59,7 +62,7 @@ static void		ft_julia_calc(t_setup *setup)
 		JUL->z_i = 2 * JUL->z_i * JUL->tmp + JUL->c_i / setup->width;
 		JUL->it++;
 	}
-	ft_put_pxl_to_img(setup, JUL->pos, ft_julia_give_color(setup));
+	ft_put_pixel(setup, JUL->pos.x, JUL->pos.y, ft_julia_give_color(setup));
 }
 
 void			*ft_julia(void *tab)

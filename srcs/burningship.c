@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 14:12:05 by psebasti          #+#    #+#             */
-/*   Updated: 2017/08/03 12:52:12 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/11 19:04:17 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void			ft_burningship_init(t_setup *setup)
 	ft_color(BUR->clr[2], 255, 255, 255);
 }
 
-static t_color	*ft_burningship_give_color(t_setup *setup)
+static int		ft_burningship_give_color(t_setup *setup)
 {
 	double coef;
 
@@ -40,7 +40,10 @@ static t_color	*ft_burningship_give_color(t_setup *setup)
 		BUR->clr[2]->b = (BUR->clr[1]->b - BUR->clr[0]->b) * coef;
 	else
 		BUR->clr[2]->b = BUR->clr[1]->b;
-	return (BUR->clr[2]);
+	if (setup->drunk_mode)
+		return ((int)ft_stoul("c0000000", 16) + ft_colortohex(BUR->clr[2]));
+	else
+		return (ft_colortohex(BUR->clr[2]));
 }
 
 static void		ft_burningship_calc(t_setup *setup)
@@ -58,7 +61,9 @@ static void		ft_burningship_calc(t_setup *setup)
 		BUR->z_r = BUR->tmp;
 		BUR->it++;
 	}
-	ft_put_pxl_to_img(setup, BUR->pos, ft_burningship_give_color(setup));
+	//if (setup->f_mode != 4 && BUR->it > 4.)
+	ft_put_pixel(setup, BUR->pos.x, BUR->pos.y, \
+			ft_burningship_give_color(setup));
 }
 
 void			*ft_burningship(void *tab)
