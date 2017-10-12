@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:09:10 by psebasti          #+#    #+#             */
-/*   Updated: 2017/10/10 15:38:22 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/12 13:32:12 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ size_t			ft_fract_calc(t_setup *setup)
 	if (SETUP.f_mode == 2 || SETUP.f_mode == 4)
 		if (ft_fractol_pthread(setup, 2, ft_burningship) != 0)
 			return (OK);
-	if (SETUP.f_mode == 3 || SETUP.f_mode == 4)
+	if (SETUP.f_mode == 3)
 		if (ft_fractol_pthread(setup, 3, ft_cantor) != 0)
 			return (OK);
 	return (ERROR);
