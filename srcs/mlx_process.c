@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:01:08 by psebasti          #+#    #+#             */
-/*   Updated: 2017/10/12 14:20:05 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/12 14:40:07 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,4 +123,14 @@ void			ft_put_pixel(t_setup *setup, int x, int y, int color)
 			+ x * (IMG->bbp >> 3);
 	tmp = (int *)&IMG->image_addr[index];
 	*tmp = color;
+}
+
+void	ft_put_pxl_to_img(t_setup *setup, t_vec3 pos, t_color *clr)
+{
+	unsigned int	index;
+
+	index = (pos.y * setup->width) * (IMG->bbp >> 3) \
+			+ pos.x * (IMG->bbp >> 3);
+	if (pos.x < setup->width && pos.y < setup->height)
+		ft_memcpy(setup->img->image_addr + index, clr, sizeof(int));
 }
