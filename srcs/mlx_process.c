@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:01:08 by psebasti          #+#    #+#             */
-/*   Updated: 2017/10/11 19:09:29 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/12 12:55:37 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ static int	ft_key_hook(int keycode, t_setup *setup)
 		ft_setup_f_mode(0, setup);
 	if (keycode == M_KEY)
 		setup->drunk_mode = !setup->drunk_mode;
+	if (keycode == I_KEY)
+		setup->i_ratio = !setup->i_ratio;
 	ft_expose_hook(setup);
 	return (0);
 }

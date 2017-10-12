@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 14:12:05 by psebasti          #+#    #+#             */
-/*   Updated: 2017/10/11 19:04:17 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/12 12:58:11 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int		ft_burningship_give_color(t_setup *setup)
 {
 	double coef;
 
-	coef = BUR->it / 25.;
+	coef = BUR->it / 50.;
 	if (BUR->clr[1]->r - BUR->clr[0]->r)
 		BUR->clr[2]->r = (BUR->clr[1]->r - BUR->clr[0]->r) * coef;
 	else
@@ -50,18 +50,19 @@ static void		ft_burningship_calc(t_setup *setup)
 {
 	BUR->c_r = BUR->pos.x / BUR->zoom + BUR->vec.x;
 	BUR->c_i = BUR->pos.y / BUR->zoom + BUR->vec.y;
-	BUR->z_r = 0;
-	BUR->z_i = 0;
+	BUR->z_r = 0.18;
+	BUR->z_i = 0.4;
 	BUR->it = 0;
+	BUR->ratio_i = (setup->i_ratio ? BUR->ratio_i : 2.);
 	while (BUR->z_r * BUR->z_r + BUR->z_i *
 			BUR->z_i < 4 && BUR->it < BUR->it_max)
 	{
 		BUR->tmp = BUR->z_r * BUR->z_r - BUR->z_i * BUR->z_i + BUR->c_r;
-		BUR->z_i = BUR->c_i + fabs(2 * BUR->z_i * BUR->z_r);
+		BUR->z_i = BUR->c_i + fabs(BUR->ratio_i * BUR->z_i * BUR->z_r);
 		BUR->z_r = BUR->tmp;
 		BUR->it++;
 	}
-	//if (setup->f_mode != 4 && BUR->it > 4.)
+	if (setup->f_mode != 4 && BUR->it > 4.)
 	ft_put_pixel(setup, BUR->pos.x, BUR->pos.y, \
 			ft_burningship_give_color(setup));
 }

@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:36 by psebasti          #+#    #+#             */
-/*   Updated: 2017/10/11 18:49:54 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/12 13:01:48 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int		ft_julia_give_color(t_setup *setup)
 {
 	double coef;
 
-	coef = JUL->it / 25.;
+	coef = JUL->it / 50.;
 	if (JUL->clr[1]->r - JUL->clr[0]->r)
 		JUL->clr[2]->r = (JUL->clr[1]->r - JUL->clr[0]->r) * coef;
 	else
@@ -62,6 +62,7 @@ static void		ft_julia_calc(t_setup *setup)
 		JUL->z_i = 2 * JUL->z_i * JUL->tmp + JUL->c_i / setup->width;
 		JUL->it++;
 	}
+	if (setup->f_mode != 4 && JUL->it > 4.)
 	ft_put_pixel(setup, JUL->pos.x, JUL->pos.y, ft_julia_give_color(setup));
 }
 

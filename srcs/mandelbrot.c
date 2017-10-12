@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:20 by psebasti          #+#    #+#             */
-/*   Updated: 2017/10/11 18:32:03 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/12 12:47:47 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void			ft_mandelbrot_init(t_setup *setup)
 	MAN->zoom = 200;
 	MAN->vec.x = -3.;
 	MAN->vec.y = -2.6;
-	MAN->c_r = -0.285;
+	MAN->c_r = 0.298;
 	MAN->c_i = -0.01;
 	ft_color(MAN->clr[0], 0, 0, 0);
 	ft_color(MAN->clr[1], 255, 255, 255);
@@ -42,8 +42,6 @@ static int 		ft_mandelbrot_give_color(t_setup *setup)
 		MAN->clr[2]->b = (MAN->clr[1]->b - MAN->clr[0]->b) * coef;
 	else
 		MAN->clr[2]->b = MAN->clr[1]->b;
-	//if (MAN->it < 4.)
-	//	return (0xC0000000);
 	if (setup->drunk_mode || setup->f_mode == 4)
 		return ((int)ft_stoul("c0000000", 16) + ft_colortohex(MAN->clr[2]));
 	else
@@ -57,15 +55,17 @@ static void		ft_mandelbrot_calc(t_setup *setup)
 	MAN->z_r = 0;
 	MAN->z_i = 0;
 	MAN->it = 0;
+	MAN->ratio_i = (setup->i_ratio ? MAN->ratio_i : 2.);
 	while (MAN->z_r * MAN->z_r + MAN->z_i *
 			MAN->z_i < 4 && MAN->it < MAN->it_max)
 	{
 		MAN->tmp = MAN->z_r;
 		MAN->z_r = MAN->z_r * MAN->z_r -
 			MAN->z_i * MAN->z_i + MAN->c_r;
-		MAN->z_i = 2 * MAN->z_i * MAN->tmp + MAN->c_i;
+		MAN->z_i = MAN->ratio_i * MAN->z_i * MAN->tmp + MAN->c_i;
 		MAN->it++;
 	}
+	if (setup->f_mode != 4 && MAN->it > 4.)
 	ft_put_pixel(setup, MAN->pos.x, MAN->pos.y, \
 			ft_mandelbrot_give_color(setup));
 }

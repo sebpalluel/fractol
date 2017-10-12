@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:55:22 by psebasti          #+#    #+#             */
-/*   Updated: 2017/08/02 18:01:59 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/12 12:58:00 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,32 @@ static void	ft_dezoom(t_fract *fract)
 	fract->it_max--;
 }
 
+static double 		ft_range_num(double input, double i[2], double o[2])
+{
+	double 			slope;
+	double			output;
+
+	slope = 1.0 * (o[1] - o[0]) / (i[1] - i[0]);
+	output = o[0] + slope * (input - i[0]);
+	return (output);
+}
+
 int			ft_mouse_moove(int x, int y, t_setup *setup)
 {
+	double i[2];
+	double o[2];
+
 	JUL->c_r = -0.285 + (double)x / 2;
 	JUL->c_i = -0.02 + (double)y / 2;
+	if (SETUP.i_ratio)
+	{
+		i[0] = 0;
+		i[1] = setup->width;
+		o[0] = 1.2;
+		o[1] = 4.;
+		BUR->ratio_i = ft_range_num(x, i, o);
+		MAN->ratio_i = ft_range_num(x, i, o);
+	}
 	ft_expose_hook(setup);
 	return (1);
 }
