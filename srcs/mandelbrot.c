@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:20 by psebasti          #+#    #+#             */
-/*   Updated: 2017/10/12 12:47:47 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/12 15:13:31 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void			ft_mandelbrot_init(t_setup *setup)
 	ft_color(MAN->clr[2], 255, 255, 255);
 }
 
-static int 		ft_mandelbrot_give_color(t_setup *setup)
+static int		ft_mandelbrot_give_color(t_setup *setup)
 {
 	double coef;
 
-	coef = MAN->it/50.;
+	coef = MAN->it / 50.;
 	if (MAN->clr[1]->r - MAN->clr[0]->r)
 		MAN->clr[2]->r = (MAN->clr[1]->r - MAN->clr[0]->r) * coef;
 	else
@@ -66,8 +66,8 @@ static void		ft_mandelbrot_calc(t_setup *setup)
 		MAN->it++;
 	}
 	if (setup->f_mode != 4 && MAN->it > 4.)
-	ft_put_pixel(setup, MAN->pos.x, MAN->pos.y, \
-			ft_mandelbrot_give_color(setup));
+		ft_put_pixel(setup, MAN->pos.x, MAN->pos.y, \
+				ft_mandelbrot_give_color(setup));
 }
 
 void			*ft_mandelbrot(void *tab)

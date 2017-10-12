@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 18:01:08 by psebasti          #+#    #+#             */
-/*   Updated: 2017/10/12 14:51:14 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/12 15:22:52 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ int			ft_expose_hook(t_setup *setup)
 	return (1);
 }
 
-static void ft_move_arrow_all(int keycode, t_setup *setup)
+static void	ft_move_arrow_all(int keycode, t_setup *setup)
 {
 	int		frac;
 	float	amp_x;
 	float	amp_y;
 
-	amp_x =  setup->width / (SETUP.fract[0]->zoom * \
+	amp_x = setup->width / (SETUP.fract[0]->zoom * \
 			(setup->width / 10.));
-	amp_y =  setup->height / (SETUP.fract[0]->zoom * \
+	amp_y = setup->height / (SETUP.fract[0]->zoom * \
 			(setup->height / 10.));
 	frac = -1;
 	if (keycode == LEFT)
@@ -48,16 +48,16 @@ static void ft_move_arrow_all(int keycode, t_setup *setup)
 			SETUP.fract[frac]->vec.y -= amp_y;
 }
 
-void	ft_move_arrow(int keycode, t_setup *setup)
+void		ft_move_arrow(int keycode, t_setup *setup)
 {
 	float	amp_x;
 	float	amp_y;
 
 	if (SETUP.f_mode < FNUM - 1)
 	{
-		amp_x =  setup->width / (SETUP.fract[SETUP.f_mode]->zoom * \
+		amp_x = setup->width / (SETUP.fract[SETUP.f_mode]->zoom * \
 				(setup->width / 10.));
-		amp_y =  setup->height / (SETUP.fract[SETUP.f_mode]->zoom * \
+		amp_y = setup->height / (SETUP.fract[SETUP.f_mode]->zoom * \
 				(setup->height / 10.));
 		if (keycode == LEFT)
 			SETUP.fract[SETUP.f_mode]->vec.x += amp_x;
@@ -71,8 +71,6 @@ void	ft_move_arrow(int keycode, t_setup *setup)
 	else
 		ft_move_arrow_all(keycode, setup);
 }
-
-
 
 static int	ft_key_hook(int keycode, t_setup *setup)
 {
@@ -110,17 +108,4 @@ void		ft_mlx_process(t_setup *setup)
 	mlx_mouse_hook(MLX->win_ptr, ft_mouse_hook, setup);
 	mlx_do_sync(MLX->mlx_ptr);
 	mlx_loop(MLX->mlx_ptr);
-}
-
-void			ft_put_pixel(t_setup *setup, int x, int y, int color)
-{
-	int			*tmp;
-	size_t		index;
-
-	if (y >= (int)setup->height || x >= (int)setup->width || x < 0 || y < 0)
-		return ;
-	index = (y * setup->width) * (IMG->bbp >> 3) \
-			+ x * (IMG->bbp >> 3);
-	tmp = (int *)&IMG->image_addr[index];
-	*tmp = color;
 }

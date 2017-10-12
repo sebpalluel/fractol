@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 17:50:09 by psebasti          #+#    #+#             */
-/*   Updated: 2017/10/12 14:21:23 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/12 15:26:21 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void		ft_fractol_cpy(t_setup *setup, size_t frac, size_t i)
 	ft_vec3cpy(&SETUP.fract[frac]->focus, &setup[i + 1].fract[frac]->focus);
 	j = 0;
 	while (j < 3)
-	{	
+	{
 		ft_colorcpy(SETUP.fract[frac]->clr[j], \
 				setup[i + 1].fract[frac]->clr[j]);
 		j++;
@@ -78,4 +78,17 @@ int				ft_fractol_pthread(t_setup *setup, size_t frac, \
 	}
 	err = ft_pthread_process(setup, f);
 	return (err);
+}
+
+void			ft_put_pixel(t_setup *setup, int x, int y, int color)
+{
+	int		*tmp;
+	size_t	index;
+
+	if (y >= (int)setup->height || x >= (int)setup->width || x < 0 || y < 0)
+		return ;
+	index = (y * setup->width) * (IMG->bbp >> 3) \
+			+ x * (IMG->bbp >> 3);
+	tmp = (int *)&IMG->image_addr[index];
+	*tmp = color;
 }

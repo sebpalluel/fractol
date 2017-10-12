@@ -6,13 +6,13 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:09:10 by psebasti          #+#    #+#             */
-/*   Updated: 2017/10/12 14:54:37 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/12 15:11:38 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-int				ft_error_usage()
+int				ft_error_usage(void)
 {
 	ft_putendl("Usage:\n\
 			./fractol \"mandelbrot\"\n\
@@ -80,7 +80,7 @@ static size_t	ft_setup_fract_select(char **av, t_setup *setup)
 
 int				main(int ac, char **av)
 {
-	t_setup	*setup = NULL;
+	t_setup	*setup;
 
 	if (ac == 2)
 	{
@@ -91,7 +91,7 @@ int				main(int ac, char **av)
 		if (ft_setup_mode(setup, 1) != OK && \
 				ft_setup_fract_select(av, setup) != OK && \
 				SETUP.f_mode != 666)
-		ft_mlx_process(setup);
+			ft_mlx_process(setup);
 		return (ft_setup_mode(setup, 0));
 	}
 	return (ft_error_usage());

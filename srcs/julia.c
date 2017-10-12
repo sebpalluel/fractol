@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:13:36 by psebasti          #+#    #+#             */
-/*   Updated: 2017/10/12 13:03:16 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/12 15:12:11 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void		ft_julia_calc(t_setup *setup)
 		JUL->it++;
 	}
 	if (setup->f_mode != 4 && JUL->it > 4.)
-	ft_put_pixel(setup, JUL->pos.x, JUL->pos.y, ft_julia_give_color(setup));
+		ft_put_pixel(setup, JUL->pos.x, JUL->pos.y, ft_julia_give_color(setup));
 }
 
 void			*ft_julia(void *tab)

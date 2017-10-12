@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:58:45 by psebasti          #+#    #+#             */
-/*   Updated: 2017/10/10 15:32:07 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/12 15:30:24 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 static size_t	ft_setup_fract_init(t_setup *setup)
 {
-	size_t i;
-	size_t j;
+	size_t		i;
+	size_t		j;
 
 	i = 0;
 	if (!(setup->fract = (t_fract **)ft_memalloc(sizeof(t_fract *) * FNUM + 1)))
 		return (ERROR);
 	while (i < FNUM)
 	{
-		if(!(setup->fract[i] = (t_fract *)ft_memalloc(sizeof(t_fract)))\
+		if (!(setup->fract[i] = (t_fract *)ft_memalloc(sizeof(t_fract)))\
 				|| !(setup->fract[i]->clr = (t_color **)\
 					ft_memalloc(sizeof(t_color *) * 4)))
 			return (ERROR);
@@ -43,13 +43,13 @@ static size_t	ft_setup_fract_init(t_setup *setup)
 static void		ft_setup_delete_mlx_img(size_t i, t_setup *setup)
 {
 	if (i == 0)
-			ft_mlxdelete(MLX, IMG);
+		ft_mlxdelete(MLX, IMG);
 	else
 	{
 		if (setup[i].img)
-			free (setup[i].img);
+			free(setup[i].img);
 		if (setup[i].mlx)
-			free (setup[i].mlx);
+			free(setup[i].mlx);
 	}
 }
 
@@ -66,11 +66,11 @@ static void		ft_setup_delete(size_t i, t_setup *setup)
 		{
 			col_n = -1;
 			while (++col_n < 4)
-				free (setup[i].fract[frac_n]->clr[col_n]);
-			free (setup[i].fract[frac_n]->clr);
-			free (setup[i].fract[frac_n]);
+				free(setup[i].fract[frac_n]->clr[col_n]);
+			free(setup[i].fract[frac_n]->clr);
+			free(setup[i].fract[frac_n]);
 		}
-		free (setup[i].fract);
+		free(setup[i].fract);
 	}
 }
 
@@ -106,7 +106,7 @@ size_t			ft_setup_mode(t_setup *setup, size_t mode)
 	i = -1;
 	if (mode)
 	{
-		if (ft_setup_fract_init(&SETUP) != OK  && ft_setup_init(setup) != OK)
+		if (ft_setup_fract_init(&SETUP) != OK && ft_setup_init(setup) != OK)
 			return (ERROR);
 		return (OK);
 	}
@@ -119,7 +119,6 @@ size_t			ft_setup_mode(t_setup *setup, size_t mode)
 			ft_putendl("program exited normally");
 		else
 			ft_error_usage();
-		while (42);
-		exit (0);
+		exit(0);
 	}
 }

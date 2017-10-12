@@ -6,7 +6,7 @@
 #*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2017/01/09 14:05:27 by psebasti          #+#    #+#             *#
-#*   Updated: 2017/08/03 17:03:26 by psebasti         ###   ########.fr       *#
+#*   Updated: 2017/10/12 15:16:52 by psebasti         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -22,8 +22,7 @@ SRC 		=	srcs/fractol.c \
 				srcs/burningship.c \
 				srcs/utils.c \
 				srcs/mlx_control.c \
-#				srcs/cam.c \
-				srcs/update_map.c \
+				srcs/mlx_print.c \
 
 EXT			=	Makefile
 

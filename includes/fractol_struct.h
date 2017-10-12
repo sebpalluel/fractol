@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:32:54 by psebasti          #+#    #+#             */
-/*   Updated: 2017/10/12 12:47:53 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/12 15:06:53 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct		s_fract
 	t_color			**clr;
 }					t_fract;
 
-typedef struct		s_setup 
+typedef struct		s_setup
 {
 	size_t			width;
 	size_t			height;

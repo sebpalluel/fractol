@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 20:55:22 by psebasti          #+#    #+#             */
-/*   Updated: 2017/10/12 14:57:31 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/12 15:23:35 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ static void	ft_zoom(int x, int y, t_fract *fract)
 static void	ft_dezoom(t_fract *fract)
 {
 	fract->vec.x = (fract->focus.x / fract->zoom + fract->vec.x) -\
-				   ((fract->zoom / AMP) / 2);
+				((fract->zoom / AMP) / 2);
 	fract->vec.x += ((fract->zoom / AMP) / 2) - (fract->focus.x /\
 			(fract->zoom / AMP));
 	fract->vec.y = (fract->focus.y / fract->zoom + fract->vec.y) -\
-				   ((fract->zoom / AMP) / 2);
+				((fract->zoom / AMP) / 2);
 	fract->vec.y += ((fract->zoom / AMP) / 2) - (fract->focus.y /\
 			(fract->zoom / AMP));
 	fract->zoom /= AMP;

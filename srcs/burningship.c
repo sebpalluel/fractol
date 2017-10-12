@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 14:12:05 by psebasti          #+#    #+#             */
-/*   Updated: 2017/10/12 13:12:29 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/12 15:08:05 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ static void		ft_burningship_calc(t_setup *setup)
 		BUR->it++;
 	}
 	if (setup->f_mode != 4 && BUR->it > 4.)
-	ft_put_pixel(setup, BUR->pos.x, BUR->pos.y, \
-			ft_burningship_give_color(setup));
+		ft_put_pixel(setup, BUR->pos.x, BUR->pos.y, \
+				ft_burningship_give_color(setup));
 }
 
 void			*ft_burningship(void *tab)
