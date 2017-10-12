@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/12 20:25:18 by psebasti          #+#    #+#             */
-/*   Updated: 2017/10/12 14:40:25 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/12 14:50:21 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ size_t	ft_setup_mode(t_setup *setup, size_t mode);
 int		ft_fractol_pthread(t_setup *setup, size_t frac, void *(*f)(void *));
 void	ft_mlx_process(t_setup *setup);
 void	ft_put_pixel(t_setup *setup, int x, int y, int color);
-void	ft_put_pxl_to_img(t_setup *setup, t_vec3 pos, t_color *clr);
 void	ft_mandelbrot_init(t_setup *setup);
 void	*ft_mandelbrot(void *setup);
 void	ft_julia_init(t_setup *setup);

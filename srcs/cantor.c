@@ -6,7 +6,7 @@
 /*   By: psebasti <sebpalluel@free.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/05 18:18:36 by psebasti          #+#    #+#             */
-/*   Updated: 2017/10/12 14:41:53 by psebasti         ###   ########.fr       */
+/*   Updated: 2017/10/12 14:52:19 by psebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void			ft_cantor_init(t_setup *setup)
 	ft_color(CAN->clr[2], 255, 255, 255);
 }
 
-static t_color	*ft_cantor_give_color(t_setup *setup)
+static int		ft_cantor_give_color(t_setup *setup)
 {
-	double coef;
+	double		coef;
 
 	coef = CAN->vec.x / CAN->vec.y;
 	if (CAN->clr[1]->r - CAN->clr[0]->r)
@@ -36,7 +36,10 @@ static t_color	*ft_cantor_give_color(t_setup *setup)
 		CAN->clr[2]->b = (CAN->clr[1]->b - CAN->clr[0]->b) * coef;
 	else
 		CAN->clr[2]->b = CAN->clr[1]->b;
-	return (CAN->clr[2]);
+	if (setup->drunk_mode)
+		return ((int)ft_stoul("c0000000", 16) + ft_colortohex(CAN->clr[2]));
+	else
+		return (ft_colortohex(CAN->clr[2]));
 }
 
 static void		ft_cantor_line(t_setup *setup, t_vec3 start, t_vec3 end)
@@ -49,7 +52,7 @@ static void		ft_cantor_line(t_setup *setup, t_vec3 start, t_vec3 end)
 		CAN->tmp = start.x;
 		while (start.x <= end.x)
 		{
-			ft_put_pxl_to_img(setup, CAN->pos, ft_cantor_give_color(setup));
+			ft_put_pixel(setup, start.x, start.y, ft_cantor_give_color(setup));
 			start.x++;
 		}
 		start.x = CAN->tmp;
